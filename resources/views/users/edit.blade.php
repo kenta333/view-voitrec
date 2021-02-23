@@ -26,29 +26,26 @@
             <h4 class="text-center">マイプロフィール編集</h4>
             </div>
 
-            {!! Form::open(['route' => 'signup.post']) !!}
-                <div class="form-group">
-                    {!! Form::label('name', 'ユーザー名') !!}
-                    {!! Form::text('name', old('name'), ['class' => 'form-control']) !!}
-                </div>
+            {!! Form::open(['route' => ['users.update',$user->id], 'method' => 'put']) !!}
+           
                 <div class="form-group">
                     {!! Form::label('old', '年齢(任意)') !!}
-                    {!! Form::select('selectEvaluate', ['young' => '0～27歳', 'midlle' => '28～40歳', 'ground' => '41歳以上'], 'ordinarily', ['class' => 'form-control','id' => 'selectEvalute'])!!}
+                    {!! Form::text('old', old('old'), ['class' => 'form-control']) !!}
                 </div>
                 
                    <div class="form-group">
                     {!! Form::label('gender', '性別') !!}
-                    {!! Form::select('selectEvaluate', ['men' => '男性', 'women' => '女性'], 'ordinarily', ['class' => 'form-control','id' => 'selectEvalute'])!!}
+                    {!! Form::text('gender', old('gender'), ['class' => 'form-control']) !!}
                 </div>
                 
                  <div class="form-group">
                     {!! Form::label('like', '好きなジャンル') !!}
-                    {!! Form::select('selectEvaluate', ['rock' => 'ロック', 'pop' => 'pops', 'jazz' => 'ジャズ','another'=>'その他'], 'ordinarily', ['class' => 'form-control','id' => 'selectEvalute'])!!}
+                    {!! Form::text('like', old('like'), ['class' => 'form-control']) !!}
                 </div>
                 
                   <div class="form-group">
                     {!! Form::label('free', '自己紹介文') !!}
-                    {!! Form::text('name', old('free'), ['class' => 'form-control']) !!}
+                    {!! Form::text('free', old('free'), ['class' => 'form-control']) !!}
                 </div>
                  <br>
                   <br>

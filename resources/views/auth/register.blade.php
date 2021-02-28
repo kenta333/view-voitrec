@@ -29,20 +29,22 @@
                     {!! Form::password('password', ['class' => 'form-control']) !!}
                 </div>
                 
-                  <div class="form-group">
-                    {!! Form::label('old', '年齢(任意)') !!}
-                    {!! Form::text('old', old('old'), ['class' => 'form-control']) !!}
+                 <div class="form-group">
+                    {!! Form::label('like', '好きなアーティスト') !!}
+                    {!! Form::text('like', old('like'), ['class' => 'form-control']) !!}
                 </div>
-                
+            
                          <div class="form-group">
                     {!! Form::label('gender', '性別') !!}
                     {!! Form::text('gender', old('gender'), ['class' => 'form-control']) !!}
                 </div>
                 
-                 <div class="form-group">
-                    {!! Form::label('like', '好きなジャンル') !!}
-                    {!! Form::text('like', old('like'), ['class' => 'form-control']) !!}
+                            <div class="form-group">
+                    {!! Form::label('old', '年齢(任意)') !!}
+                    {!! Form::text('old', old('old'), ['class' => 'form-control']) !!}
                 </div>
+                
+
                  <br>
                   <br>
                  

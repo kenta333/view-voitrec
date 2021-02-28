@@ -18,6 +18,7 @@ class User extends Authenticatable
     protected $fillable = [
         'name', 'email', 'password','old','gender','like',
     ];
+    
 
     /**
      * The attributes that should be hidden for arrays.
@@ -36,4 +37,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    
+        public function voices()
+    {
+        return $this->hasMany(Voice::class);
+    }
 }

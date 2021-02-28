@@ -17,7 +17,7 @@
                      @endif
                      <button type="button" class="btn btn-danger mt-2 mb-2">マッチング</button>
                      @if (Auth::id()==$user->id)
-                     {!! link_to_route('voice.create', 'voiceをアップロードする', [], ['class' => 'btn btn-outline-danger mt-2 mb-2']) !!}
+                     {!! link_to_route('voice.add', 'voiceをアップロードする', [], ['class' => 'btn btn-outline-danger mt-2 mb-2']) !!}
                      @endif
                 </div> 
             </div>
@@ -35,7 +35,7 @@
              ユーザータイプ：{{$user->type}}<br>
              性別：{{$user->gender}}<br>
              年齢：{{$user->old}}<br>
-             好きなジャンル：{{$user->like}}<br>
+             好きなアーティスト：{{$user->like}}<br>
              自己紹介：{{$user->free}}<br>
              
              

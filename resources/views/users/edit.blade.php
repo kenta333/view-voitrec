@@ -39,7 +39,7 @@
                 </div>
                 
                  <div class="form-group">
-                    {!! Form::label('like', '好きなジャンル') !!}
+                    {!! Form::label('like', '好きなアーティスト') !!}
                     {!! Form::text('like', old('like'), ['class' => 'form-control']) !!}
                 </div>
                 

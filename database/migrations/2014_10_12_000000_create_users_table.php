@@ -18,11 +18,11 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('old')->nullable();
+            $table->integer('old')->nullable();
             $table->string('free')->default("はじめまして。これからよろしくお願いします。");
-            $table->string('gender')->default("未設定");
-            $table->string('like')->default("未設定");
-            $table->string('type')->default(1);
+            $table->integer('gender')->nullable();
+            $table->string('like')->nullable();
+            $table->integer('type')->default(1);
             $table->rememberToken();
             $table->timestamps();
         });

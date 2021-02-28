@@ -32,14 +32,6 @@ class UsersController extends Controller
         ]);
     }
     
-         public function create()
-    {
-        if (\Auth::check()) { // 認証済みの場合
-      
-          return view('users.voice_create');
-        }
-        
-    }
     
         public function show($id)
     {

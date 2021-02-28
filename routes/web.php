@@ -29,8 +29,6 @@ Route::get('logout', 'Auth\LoginController@logout')->name('logout.get');
     //一般user一覧
     Route::get('users.list', 'UsersController@userslist')->name('users.list');
     
-    //voice作成画面(後々にvoiceテーブルを作成した際にVoiceコントローラーで処理する。)
-    Route::get('voice.create', 'UsersController@create')->name('voice.create');
     
 //プロフィール画面表示(ユーザー詳細)
 Route::get('users/{id}', 'UsersController@show')->name('show');
@@ -40,3 +38,11 @@ Route::get('users/{id}/edit', 'UsersController@edit')->name('user.edit');
 
 //プロフィール更新処理
 Route::put('users/{id}', 'UsersController@update')->name('users.update');
+
+// voice関係↓
+
+    //voice作成画面(後々にvoiceテーブルを作成した際にVoiceコントローラーで処理する。)
+    Route::group(['middleware' => ['auth']], function () {
+    Route::get('voice.add', 'VoicesController@add')->name('voice.add');
+    Route::post('/', 'VoicesController@store')->name('voice.store');
+    });

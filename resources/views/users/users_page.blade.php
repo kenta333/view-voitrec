@@ -16,7 +16,7 @@
                      <button type="button" class="btn btn-dark mt-2 mb-2">フォローする</button>
                      @endif
                      <button type="button" class="btn btn-danger mt-2 mb-2">マッチング</button>
-                {!! link_to_route('voice.create', 'voiceをアップロードする', [], ['class' => 'btn btn-outline-danger mt-2 mb-2']) !!}
+                {!! link_to_route('voice.add', 'voiceをアップロードする', [], ['class' => 'btn btn-outline-danger mt-2 mb-2']) !!}
                 </div> 
             </div>
         </aside>
@@ -43,14 +43,7 @@
                    <a href="#"> <img src="/voiceicon.jpg" alt="icon"></a>
                 </div> 
             </div>
-            <div class="card text-center text-white bg-dark hover mt-3">
-                <div class="card-header">
-                    <h3 class="card-title">voice_name</h3>
-                </div>
-                <div class="card-body">
-                   <a href="#"> <img src="/voiceicon.jpg" alt="icon"></a>
-                </div> 
-            </div>
+    
             <!--voiceはcardを複製して追加されていく-->
      </div>
 </div>

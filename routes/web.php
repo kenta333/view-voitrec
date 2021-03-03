@@ -41,8 +41,29 @@ Route::put('users/{id}', 'UsersController@update')->name('users.update');
 
 // voice関係↓
 
-    //voice作成画面(後々にvoiceテーブルを作成した際にVoiceコントローラーで処理する。)
+    //voice作成画面と作成処理
     Route::group(['middleware' => ['auth']], function () {
     Route::get('voice.add', 'VoicesController@add')->name('voice.add');
     Route::post('/', 'VoicesController@store')->name('voice.store');
+    
+    // voice詳細画面
+    Route::get('voices/{id}', 'VoicesController@voices')->name('voices.show');
+    // voiceタイムラインページへのget
+    Route::get('new.arrival', 'VoicesController@new')->name('new');
+    // ユーザーページ上のユーザーに紐づけされたvoice一覧ページ
+    Route::get('voice/{id}', 'VoicesController@show')->name('voice.show');
     });
+
+
+Route::group(['middleware' => ['auth']], function () {
+    Route::group(['prefix' => 'users/{id}'], function () {
+      
+      // フォロー／解除ボタン
+        Route::post('follow', 'UserFollowController@store')->name('user.follow');
+        Route::delete('unfollow', 'UserFollowController@destroy')->name('user.unfollow');
+        
+        // フォロー／フォロワー一覧画面
+        Route::get('followings', 'UsersController@followings')->name('users.followings');
+        Route::get('followers', 'UsersController@followers')->name('users.followers');
+    });
+});

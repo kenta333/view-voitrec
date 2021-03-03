@@ -52,10 +52,14 @@
               <br>
                <br>
         </div>
+        <div class="text-center">
+        {!! link_to_route('index', 'トップページに戻る', [], ['class' => 'btn btn-outline-danger  mb-2']) !!}
+        </div>
+        
     </div>
-    <div class="text-right">
-    <button type="button" class="btn btn-outline-danger mt-2 mb-2">戻る</button>
-    </div>
+   
+    
+  
 
 
 @endsection

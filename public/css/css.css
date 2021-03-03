@@ -90,11 +90,11 @@ font-family: 'Seymour One', sans-serif;
 }
 
 .hover{
-	opacity: 0.8;
+	opacity: 1.0;
 }
 
 .hover:hover {
-	opacity: 1.0;
+	opacity: 0.8;
 }
 
 .box{
@@ -112,4 +112,12 @@ font-family: 'Seymour One', sans-serif;
 .matching-image {
 	background-image: url(/1.jpg);
 	 background-size:cover;
+}
+
+.welcome {
+	background-image: url(/welcome.jpg);
+	opacity: 0.9;
+	 background-size:cover;
+	height: 480px;
+	text-align: center;
 }

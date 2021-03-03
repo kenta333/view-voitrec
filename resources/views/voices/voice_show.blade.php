@@ -5,23 +5,32 @@
         <aside class="col-sm-4">
             <div class="card text-center mt-4">
                 <div class="card-header">
-                    <h3 class="card-title">voice_title</h3>
+                    <h3 class="card-title">{{ $voice->title }}</h3>
                 </div>
                 <div class="card-body">
                     <img src="/sound-sample.jpg" alt="icon">
-                     <p>voiceの内容紹介</p>
-                    <a href="#">投稿者のuser_name(リンク)</a><br>
+                    <ul class="list-group list-group-flush">
+    <li class="list-group-item">このvoiceの投稿者コメント<p>(<a href="/users/{{$user->id}}">{{ $user->name}}</a>)</p></li>
+       
+    <li class="list-group-item"><h3>{{$voice->content}}</h3></li>
+
+  </ul>
+                 
                      
-                <button type="button" class="btn btn-outline-danger mt-2 mb-2 ">コメントする</button>
                 </div>
                 </div> 
             
         </aside>
+        
+
         <!--コメントエリア-->
          <div class="col-sm-8">
                 <button type="button" class="btn btn-primary btn-block mt-3">
             コメント <span class="badge badge-light">4</span>
         </button>
+          <div class="text-center">
+                <button type="button" class="btn btn-outline-danger mt-4 mb-4 ">このvoiceにコメントする</button>
+                </div>
         <div class="media mt-3">
             <img class="mr-3" src="/icon.jpg">
             <div class="media-body">
@@ -60,7 +69,8 @@
             </div>
             
             <!--1colで纏まっている-->
-            
+           
         </div>
 </div>
+
 @endsection

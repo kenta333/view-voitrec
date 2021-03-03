@@ -2,6 +2,7 @@
 
 @section('content')
 
+
        <div class="center-text">
          <h1><span class="logo">voiterc</span>はボイストレーニングマッチングサイトです。</h1>
          <br>

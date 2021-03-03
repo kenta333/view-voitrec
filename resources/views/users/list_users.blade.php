@@ -21,7 +21,7 @@
           
           <!--ユーザー一覧は自分も入っているため自分のカードにはフォローボタンを表示しない-->
          @if (Auth::id()!=$user->id)
-        {!! link_to_route('signup.get', 'フォローする', [], ['class' => 'btn btn-lg btn-dark btn-sm mt-3 mb-3']) !!}
+         @include('user_follow.follow_button')
         @endif
         <p class="card-text">フォロー／</p>
          <p class="card-text">フォロワー／</p>

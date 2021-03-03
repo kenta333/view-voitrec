@@ -5,7 +5,7 @@
 <ul>
 	
    <li><a class="logo" href="/">voitrec</a></li> 
-	<li><a href="#">新着投稿</a></li>
+	<li><a href="#">{!! link_to_route('new', '新着投稿', []) !!}</a></li>
 	<li>
 		<a href="#">user一覧 <span class="caret"></span></a>
 		<div>

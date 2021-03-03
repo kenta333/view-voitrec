@@ -13,7 +13,7 @@
                     <p>フォロー／</p>
                      <p>フォロワー／</p>
                          @if (Auth::id()!=$user->id)
-                     <button type="button" class="btn btn-dark mt-2 mb-2">フォローする</button>
+                     @include('user_follow.follow_button')
                      @endif
                      <button type="button" class="btn btn-danger mt-2 mb-2">マッチング</button>
                      @if (Auth::id()==$user->id)
@@ -24,7 +24,8 @@
         </aside>
         <div class="col-sm-8">
                <nav class="nav nav-pills nav-fill mt-4">
-            <a class="nav-item nav-link bg-light " href="#">voice</a>
+                   <!--↓今はログインユーザーのvoice一覧に飛んでしまうが後々voicecontrollerで指定ユーザーの投稿のみ表示するルーティングを作成する-->
+           {!! link_to_route('voices.show', 'voice', ['id' => $user->id],['class' => 'nav-item nav-link bg-light']) !!}
              <a class="nav-item nav-link  bg-dark active" href="#">プロフィール</a>
              
         </nav>

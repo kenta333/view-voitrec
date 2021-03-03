@@ -9,8 +9,8 @@
                 </div>
                 <div class="card-body">
                     <img src="/icon.jpg" alt="icon">
-                    <p>フォロー／{!! link_to_route('users.followings', $user->followings_count, ['id' => $user->id], ['class' => 'btn btn-outline-info mt-2 mb-2']) !!}</p>
-                     <p>フォロワー／{!! link_to_route('users.followers', '23', ['id' => $user->id], ['class' => 'btn btn-outline-info mt-2 mb-2']) !!}</p></p>
+                    <h5>フォロー／{!! link_to_route('users.followings', $user->followings_count, ['id' => $user->id], []) !!}</h5>
+                     <h5>フォロワー／{!! link_to_route('users.followers', $user->followers_count, ['id' => $user->id], []) !!}</h5>
                      <!--フォローボタンはログインした自分のページには非表示で良いため-->
                      @if (!Auth::check())
                      @include('user_follow.follow_button')

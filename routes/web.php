@@ -67,3 +67,13 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('followers', 'UsersController@followers')->name('users.followers');
     });
 });
+
+
+// コメント機能
+Route::group(['middleware' => ['auth']], function () {
+    Route::group(['prefix' => 'voices/{id}'], function () {
+      
+      // コメント入力内容のPOST処理
+        Route::post('voices/{id}', 'CommentsController@store')->name('comment.post');
+    });
+});

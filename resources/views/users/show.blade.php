@@ -10,8 +10,8 @@
                 </div>
                 <div class="card-body">
                     <img src="/icon.jpg" alt="icon">
-                    <p>フォロー／</p>
-                     <p>フォロワー／</p>
+                    <h5>フォロー／{!! link_to_route('users.followings', $user->followings_count, ['id' => $user->id], []) !!}</h5>
+                     <h5>フォロワー／{!! link_to_route('users.followers', $user->followers_count, ['id' => $user->id], []) !!}</h5>
                          @if (Auth::id()!=$user->id)
                      @include('user_follow.follow_button')
                      @endif

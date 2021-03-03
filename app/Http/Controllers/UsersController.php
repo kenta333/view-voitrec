@@ -16,6 +16,7 @@ class UsersController extends Controller
             $user = \Auth::user();
             
             $voices = $user->voices()->orderBy('created_at', 'desc')->paginate(3);
+             $user->loadRelationshipCounts() ;
             
                $data = [
                 'user' => $user,
@@ -35,6 +36,8 @@ class UsersController extends Controller
         {
         // ユーザ一覧をidの降順で取得
         $users = User::orderBy('id', 'desc')->paginate(5);
+     
+     
 
         // ユーザ一覧ビューでそれを表示
         return view('users.list_users', [
@@ -47,6 +50,7 @@ class UsersController extends Controller
     {
         // idの値でユーザを検索して取得
         $user = User::findOrFail($id);
+         $user->loadRelationshipCounts() ;
 
         // ユーザ詳細ビューでそれを表示
         return view('users.show', [

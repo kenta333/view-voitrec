@@ -11,12 +11,14 @@
                 <!--このユーザーはクリックしたユーザーのカードを表示する-->
                 <div class="card-body">
                     <img src="/icon.jpg" alt="icon">
-                    <p>フォロー／</p>
-                     <p>フォロワー／</p>
-                     <button type="button" class="btn btn-dark mt-2 mb-2">フォローする</button>
+                    <h5>フォロー／{!! link_to_route('users.followings', $user->followings_count, ['id' => $user->id], []) !!}</h5>
+                     <h5>フォロワー／{!! link_to_route('users.followers', $user->followers_count, ['id' => $user->id], []) !!}</h5>
+                        @include('user_follow.follow_button')
                      <button type="button" class="btn btn-danger mt-2 mb-2">マッチング</button>
                      <!--アップロードボタンは閲覧ページが自分のページだった場合のみ表示する-->
-                <button type="button" class="btn btn-outline-danger mt-2 mb-2 ">voiceをアップロードする</button>
+                     @if (Auth::id()==$user->id)
+                {!! link_to_route('voice.add', 'voiceをアップロードする', [], ['class' => 'btn btn-outline-danger mt-2 mb-2']) !!}
+                @endif
                 </div> 
             </div>
         </aside>
@@ -35,11 +37,17 @@
       <svg class="bd-placeholder-img" width="100%" height="250" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Image"><title>Placeholder</title><rect fill="#868e96" width="100%" height="100%"/><text fill="#dee2e6" dy=".3em" x="50%" y="50%">Image</text></svg>
     </div>
     <div class="col-md-8">
-      <div class="card-body">
-        <h5 class="card-title">{{$user->name}}</h5> @include('user_follow.follow_button')
-        <p class="card-text">フォロー／</p>
-         <p class="card-text">フォロワー／</p>
-      </div>
+<div class="card-body">
+        <div class="text-center"><h5 class="card-title"> {!! link_to_route('show', $user->name, ['id' => $user->id]) !!}</h5>
+
+         @include('user_follow.follow_button')
+        <ul class="list-group list-group-flush">
+    <li class="list-group-item">プロフィール</li>
+    <li class="list-group-item"><h5>{{$user->free}}</h4></li>
+    
+  </ul>
+  </div>
+    </div>
     </div>
   
   </div>

@@ -17,14 +17,18 @@
     </div>
     <div class="col-md-8">
       <div class="card-body">
-        <h5 class="card-title"> {!! link_to_route('show', $user->name, ['id' => $user->id]) !!}</h5>
+        <div class="text-center"><h5 class="card-title"> {!! link_to_route('show', $user->name, ['id' => $user->id]) !!}</h5>
           
           <!--ユーザー一覧は自分も入っているため自分のカードにはフォローボタンを表示しない-->
          @if (Auth::id()!=$user->id)
          @include('user_follow.follow_button')
         @endif
-        <p class="card-text">フォロー／</p>
-         <p class="card-text">フォロワー／</p>
+        <ul class="list-group list-group-flush">
+    <li class="list-group-item">プロフィール</li>
+    <li class="list-group-item"><h5>{{$user->free}}</h4></li>
+    
+  </ul>
+  </div>
       </div>
     </div>
   </div>

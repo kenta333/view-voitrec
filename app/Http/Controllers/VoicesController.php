@@ -54,6 +54,7 @@ class VoicesController extends Controller
 
         // ユーザの投稿一覧を作成日時の降順で取得
         $voices = $user->voices()->orderBy('created_at', 'desc')->paginate(3);
+         $user->loadRelationshipCounts() ;
 
         // ユーザ詳細ビューでそれらを表示
         return view('voices.show', [
@@ -83,7 +84,7 @@ class VoicesController extends Controller
         $voice = Voice::findOrFail($id);
         $user = $voice->user;
 
-        // メッセージ詳細ビューでそれを表示
+        // voice詳細ビューでそれを表示
         return view('voices.voice_show', [
             'voice' => $voice,
              'user' => $user,

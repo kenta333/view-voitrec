@@ -31,7 +31,7 @@
           <div class="text-center">
               <p>
   <a class='btn btn-outline-danger mt-4 mb-4' data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-    このvoiceにコメントする
+    Link with href
   </a>
   
 </p>
@@ -45,6 +45,8 @@
 </form>
   </div>
 </div>
+               {!! link_to_route('comment.create', 'このvoiceにコメントする', ['id' => $voice->id], ['class' => 'btn btn-outline-danger mt-4 mb-4']) !!}
+            
                 </div>
         <div class="media mt-3">
             <img class="mr-3" src="/icon.jpg">

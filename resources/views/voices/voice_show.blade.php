@@ -29,22 +29,6 @@
             コメント <span class="badge badge-light">4</span>
         </button>
           <div class="text-center">
-              <p>
-  <a class='btn btn-outline-danger mt-4 mb-4' data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-    Link with href
-  </a>
-  
-</p>
-<div class="collapse" id="collapseExample">
-  <div class="card card-body">
-   <div class="form-group">
-    <label for="exampleFormControlTextarea1">---コメント内容を入力してください。---</label>
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="10"></textarea>
-    <button type="button" class="btn btn-primary mt-2 mb-2 btn-block">確定</button>
-  </div>
-</form>
-  </div>
-</div>
                {!! link_to_route('comment.create', 'このvoiceにコメントする', ['id' => $voice->id], ['class' => 'btn btn-outline-danger mt-4 mb-4']) !!}
             
                 </div>

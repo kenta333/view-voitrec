@@ -14,4 +14,9 @@ class Voice extends Model
         return $this->belongsTo(User::class);
     }
     
+       public function comments_voice()
+    {
+        return $this->hasMany(Comment::class)->orderBy('created_at', 'desc');
+    }
+    
 }

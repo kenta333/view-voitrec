@@ -136,5 +136,39 @@ class UsersController extends Controller
             'users' => $followers,
         ]);
     }
-}
     
+    
+    
+    // マッチングページに関する処理
+    
+    // マッチング画面への遷移
+    public function matching_page($id)
+    {
+        
+        if (\Auth::check()) { 
+            // 認証済みユーザを取得
+            $auth_user = \Auth::user();
+            $user = User::findOrFail($id);
+            
+         $repuests = $auth_user->m_requests()->paginate(5);
+          $matching = $auth_user->matchings()->get();
+        if ($auth_user==$user) {
+            return view('users.matching_page',['requests'=>$repuests,'matching'=>$matching]);
+        }else{
+          return view('users.matching_page2',[
+            'user' => $user ]);
+        }
+    }
+}
+
+// マッチング成立画面へのGET
+
+public function matching_done($id)
+{
+$user = User::findOrFail($id);
+    return view('users.matching_finish',['user'=>$user]);
+}
+
+
+
+}

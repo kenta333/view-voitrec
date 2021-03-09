@@ -52,6 +52,11 @@ Route::put('users/{id}', 'UsersController@update')->name('users.update');
     Route::get('new.arrival', 'VoicesController@new')->name('new');
     // ユーザーページ上のユーザーに紐づけされたvoice一覧ページ
     Route::get('voice/{id}', 'VoicesController@show')->name('voice.show');
+    
+      Route::group(['prefix' => 'voices/{id}'], function () {
+    // voiceの削除機能
+    Route::delete('/voice.delete', 'VoicesController@destroy')->name('voice.delete');
+    });
     });
 
 
@@ -73,7 +78,35 @@ Route::group(['middleware' => ['auth']], function () {
 Route::group(['middleware' => ['auth']], function () {
     Route::group(['prefix' => 'voice/{id}'], function () {
       
-      // コメント入力内容のPOST処理
+      // コメント入力フォームへのget処理
         Route::get('comment', 'CommentsController@create')->name('comment.create');
+         // コメント入力内容のPOST処理
+          Route::post('/', 'CommentsController@store')->name('comment.store');
+          // コメントの削除
+           Route::delete('/comment.delete', 'CommentsController@destroy')->name('comment.delete');
+          
     });
 });
+    
+    
+    // マッチング機能
+    Route::group(['middleware' => ['auth']], function () {
+    Route::group(['prefix' => 'users/{id}'], function () {
+      // マッチングページその１
+        Route::get('matching', 'UsersController@matching_page')->name('users.mpage');
+      
+
+            // マッチング成立画面(受諾ボタンを押した時のget処理)
+       
+          Route::post('/', 'MatchingController@matching_done')->name('users.donepage');
+         
+        // マッチング拒否のデリート処理(受諾しないを押した時の処理)
+          Route::delete('matching/delete', 'MatchingController@destroy')->name('user.unmatching');
+          Route::delete('matching.request', 'MatchingController@matching_canceled')->name('matching_canceled');
+         
+        // マッチング希望送信ルーティング
+          Route::post('matching.request', 'MatchingController@store')->name('user.matching');
+          Route::get('matching.request', 'MatchingController@check')->name('matching.request');
+          
+});
+    });

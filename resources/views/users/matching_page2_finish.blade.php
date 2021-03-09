@@ -8,7 +8,7 @@
 <div class="red-font">
     <p>※マッチング成立後は有料コンテンツとなります</p>
 </div>
-<h3><a href="#">user_name</a>さんへマッチングを希望しました。<br>
+<h3>{!! link_to_route('show', $user->name, ['id' => $user->id]) !!}さんへマッチングを希望しました。<br>
 相手方が受諾した場合、マッチング成立のお知らせメールが届きます。</h3>
 </div>
 
@@ -17,8 +17,9 @@
                 <div class="col-md-12">
             <div class="card text-center hover  mt-3">
                 <div class="card-header">
-                    <h3 class="card-title"><a href="#">user_name</h3></a>
+                    <h3 class="card-title">{!! link_to_route('show', $user->name, ['id' => $user->id]) !!}</h3>
                 </div>
+                     
                 <div class="card-body">
                    <a href="#"> <img src="/icon.jpg" alt="icon"></a>
                 </div> 
@@ -42,7 +43,7 @@
 
 両者合意のもと、マッチング成立した場合は運営からお知らせのメールを送信します。
 マッチング成立後のトレーニングは有料となります。</p><br><br>
- {!! link_to_route('signup.get', 'マイプロフィールに戻る', [], ['class' => 'btn btn-lg btn-outline-info btn-block mt-3 mb-3']) !!}
+ {!! link_to_route('signup.get', 'トップページに戻る', [], ['class' => 'btn btn-lg btn-outline-info btn-block mt-3 mb-3']) !!}
 </div>
 
 @endsection

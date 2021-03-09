@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Voice;
 use Storage;
 use App\User;
+use App\Comment;
 
 
 class VoicesController extends Controller
@@ -72,7 +73,7 @@ class VoicesController extends Controller
       
     //   全ユーザーの投稿をidの新しい順にい取得
       
-          return view('users.voice_timeline',['voices'=>$voices]);
+          return view('voices.voice_timeline',['voices'=>$voices]);
   }
   }
     
@@ -83,15 +84,32 @@ class VoicesController extends Controller
         // idの値でvoiceを検索して取得
         $voice = Voice::findOrFail($id);
         $user = $voice->user;
+        
+       
+
+        
+        
 
         // voice詳細ビューでそれを表示
         return view('voices.voice_show', [
             'voice' => $voice,
              'user' => $user,
+          
         ]);
     }
     
-    
+       public function destroy($id)
+    {
+        // idの値で投稿を検索して取得
+        $voice= Voice::findOrFail($id);
+        // 認証済みユーザ（閲覧者）がその投稿の所有者である場合は、投稿を削除
+        if (\Auth::id() === $voice->user_id) {
+            $voice->delete();
+        }
+
+        // 前のURLへリダイレクトさせる
+       return redirect('/');
+    }
     
     
     

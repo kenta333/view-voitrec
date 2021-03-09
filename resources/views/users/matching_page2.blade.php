@@ -4,33 +4,36 @@
 
 <!--このファイルはマッチングページの条件分岐のひとつです。ログインユーザーが自分以外のユーザーのページのマッチングページを押した場合はこのページを表示-->
 
-<div class="text-center mt-5">
-<div class="red-font">
+  <div class="text-center mt-5">
+    <div class="red-font">
     <p>※マッチング成立後は有料コンテンツとなります</p>
-</div>
-<h3><a href="#">user_name</a>さんへマッチングを希望するお知らせをしますか？</h3>
-</div>
+    </div>
+          @if (Auth::user()->matching($user->id))
+           <h3> {!! link_to_route('show', $user->name, ['id' => $user->id]) !!}さんへマッチングを希望するお知らせをしますか？</h3>
+  </div>
 
 <div class="container">
             <div class="row">
                 <div class="col-md-12">
             <div class="card text-center hover  mt-3">
                 <div class="card-header">
-                    <h3 class="card-title"><a href="#">user_name</h3></a>
+                    <h3 class="card-title"> {!! link_to_route('show', $user->name, ['id' => $user->id]) !!}</h3>
                 </div>
                 <div class="card-body">
                    <a href="#"> <img src="/icon.jpg" alt="icon"></a>
                    <div class="card-text">
-                       {!! link_to_route('signup.get', 'する', [], ['class' => 'btn btn-lg btn-primary mt-3 mb-3']) !!}
-                       {!! link_to_route('signup.get', '戻る', [], ['class' => 'btn btn-lg btn-outline-danger mt-3 mb-3']) !!}
+                          {!! Form::open(['route' => ['user.matching', $user->id], 'method' => 'post']) !!}
+                       {!! Form::submit('する', ['class' => 'btn btn-lg btn-primary mt-3 mb-3']) !!}
+                       {!! Form::close() !!}
+                       
+                       {!! link_to_route('show', '戻る', [$user->id], ['class' => 'btn btn-lg btn-outline-danger mt-3 mb-3']) !!}
                        <p class="red-font">※一度押したボタンは取り消しができませんので、よく確認の上ボタンを押してください</p>
                    </div>
                 </div> 
             </div>
                 </div>
-              
-                <!--このまま複製-->
-                      
+             
+           
                 </div>
                 
             </div>
@@ -48,5 +51,9 @@
 マッチング成立後のトレーニングは有料となります。</p>
 
 </div>
+
+   @else
+                <h2>このユーザーへは既にマッチングのリクエスト済です。</h2>
+                @endif
 
 @endsection

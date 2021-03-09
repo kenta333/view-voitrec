@@ -3,12 +3,8 @@
 
 @section('content')
 
-<div class="row">
-        <div class="col-sm-6 offset-sm-3 mt-3">
-            <div class="box">
-            <h4 class="text-center ">voice新規作成</h4><br>
-            <p class="text-center">必要な情報を入力してあなたの歌声をアップロードします</p>
-            </div>
+
+ 
             
              @include('commons.error')
             
@@ -36,7 +32,7 @@
 
                   <div class="form-group">
                     {!! Form::label('content', '詳細コメント') !!}
-                    {!! Form::text('content', old('content'), ['class' => 'form-control']) !!}
+                    {{Form::textarea('content', null, ['class' => 'form-control', 'id' => 'textareaRemarks', 'placeholder' => 'ここにあなたの歌に関わる悩みや思っていることを入力しましょう。', 'rows' => '10'])}}
                 </div><br>
                 
 <!--<div class="input-group-prepend">-->
@@ -56,7 +52,7 @@
         {!! link_to_route('index', 'トップページに戻る', [], ['class' => 'btn btn-outline-danger  mb-2']) !!}
         </div>
         
-    </div>
+
    
     
   

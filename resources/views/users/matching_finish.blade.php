@@ -13,7 +13,7 @@
                 <div class="col-md-4">
             <div class="card text-center hover  mt-3">
                 <div class="card-header">
-                    <h3 class="card-title"><a href="#">user_name</h3></a>
+                    <h3 class="card-title"> <a href="/">{{Auth::user()->name}}</h3></a>
                 </div>
                 <div class="card-body">
                    <a href="#"> <img src="/icon.jpg" alt="icon"></a>
@@ -27,7 +27,7 @@
                 <div class="col-md-4">
             <div class="card text-center hover  mt-3">
                 <div class="card-header">
-                    <h3 class="card-title"><a href="#">user_name</h3></a>
+                    <h3 class="card-title">{!! link_to_route('show', $user->name, ['id' => $user->id]) !!}</h3>
                 </div>
                 <div class="card-body">
                    <a href="#"> <img src="/icon.jpg" alt="icon"></a>
@@ -50,7 +50,8 @@
 トレーニングは「カリキュラム作成」が完了した後にスタートします。</p>
 </div>
 
-{!! Form::submit('マイプロフィールに戻る', ['class' => 'btn btn-info btn-block mt-5']) !!}
+ {!! link_to_route('index', 'マイプロフィールに戻る', [], ['class' => 'btn btn-info btn-block mt-5']) !!}
+
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 </div>
 </div>

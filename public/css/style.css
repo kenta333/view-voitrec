@@ -149,3 +149,12 @@ footer {
     color: white;
     text-align: center;
 }
+
+.comment-block{
+  box-shadow: 0 0 8px #808080;
+  margin: 4px 8px;
+  padding: 8px 8px;
+  border-radius: 7px;
+  margin-bottom: 40px;
+  
+}

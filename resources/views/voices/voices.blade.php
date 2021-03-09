@@ -7,9 +7,10 @@
                 </div>
                <a href="/voice/{{$voice->id}}">
                     <div class="card-body">
+                  
                     <img src="/voiceicon.jpg" alt="icon">
                 </div> 
-                {!! link_to_route('voice.show', '詳細',  ['id' => $voice->id], ['class' => 'btn btn-outline-secondary mt-2 mb-2']) !!}
+                {!! link_to_route('voice.show', '詳細',  ['id' => $voice->id], ['class' => 'offset-3 col-6 btn btn-outline-secondary mt-2 mb-2']) !!}
             </div>
   
             <!--voiceはcardを複製して追加されていく-->

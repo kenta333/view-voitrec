@@ -55,6 +55,14 @@ class User extends Authenticatable
         return $this->belongsToMany(User::class, 'user_follow', 'follow_id', 'user_id')->withTimestamps();
     }
     
+    
+    // コメント機能
+    
+       public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+    
     // 中略
 
     /**
@@ -118,9 +126,68 @@ class User extends Authenticatable
 // カウント機能について
      public function loadRelationshipCounts()
     {
-        $this->loadCount(['followings', 'followers']);
+        $this->loadCount(['followings', 'followers','m_requests']);
     }
     
     
+
+    // -----------------------------------------------------------
+    // ここから↓マッチング多対多の領域
     
+    
+    
+    // マッチング機能の多対多定義
+    // このユーザーがマッチング希望を出しているユーザー
+        public function matchings()
+    {
+        return $this->belongsToMany(User::class, 'user_matching', 'user_id', 'matching_id')->withTimestamps();
+    }
+    
+    // このユーザーをマッチング希望しているユーザー
+     public function m_requests()
+    {
+        return $this->belongsToMany(User::class, 'user_matching', 'matching_id', 'user_id')->withTimestamps();
+    }
+    
+    
+    // マッチング希望の送信処理
+    
+     public function matching($userid)
+        {
+            
+     $exist = $this->is_matching($userid);
+        // 対象が自分自身かどうかの確認
+        $its_me = $this->id == $userid;
+        
+            if ($exist || $its_me) {
+            // すでにマッチングしていれば何もしない
+            return false;
+        } else {
+            
+          $this->matchings()->attach($userid);
+            return true;
+        }
+        }
+        
+        
+    // マッチング受諾しない処理
+    
+        public function unmatching($userid)
+    {
+    
+         $this->matchings()->detach($userid);
+          return true;
+          
+       
+ 
+        
+    }
+        
+        
+         public function is_matching($userid)
+    {
+        // マッチング希望中ユーザの中に $useridのものが存在するか
+        return $this->matchings()->where('matching_id', $userid)->exists();
+    }
+
 }

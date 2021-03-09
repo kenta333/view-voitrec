@@ -15,12 +15,13 @@
                      @if (!Auth::check())
                      @include('user_follow.follow_button')
                      @endif
-                     <button type="button" class="btn btn-danger mt-2 mb-2">マッチング</button>
+                       {!! link_to_route('users.mpage', 'マッチング', ['id' => $user->id], ['class' => 'btn btn-danger mt-2 mb-2']) !!}
+                        <span class= "badge badge-pill badge-danger"> {{ $user->m_requests_count}}</span>
                 {!! link_to_route('voice.add', 'voiceをアップロードする', [], ['class' => 'btn btn-outline-danger mt-2 mb-2']) !!}
                 </div> 
             </div>
         </aside>
-        
+    
          
          
       

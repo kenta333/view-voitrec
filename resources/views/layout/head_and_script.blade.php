@@ -19,10 +19,6 @@
            @include('commons.navibar')
            </div>
            <div class="top-content">
-   
-        
-       
-
         <div class="container">
             {{-- エラーメッセージ --}}
             @include('commons.error')

@@ -13,8 +13,10 @@
                     <img src="/icon.jpg" alt="icon">
                     <h5>フォロー／{!! link_to_route('users.followings', $user->followings_count, ['id' => $user->id], []) !!}</h5>
                      <h5>フォロワー／{!! link_to_route('users.followers', $user->followers_count, ['id' => $user->id], []) !!}</h5>
-                        @include('user_follow.follow_button')
-                     <button type="button" class="btn btn-danger mt-2 mb-2">マッチング</button>
+                       
+                     {!! link_to_route('users.mpage', 'マッチング', ['id' => $user->id], ['class' => 'btn btn-danger mt-2 mb-2']) !!}
+                        <span class= "badge badge-pill badge-danger"> {{ $user->m_requests_count}}</span>
+                         @include('user_follow.follow_button')
                      <!--アップロードボタンは閲覧ページが自分のページだった場合のみ表示する-->
                      @if (Auth::id()==$user->id)
                 {!! link_to_route('voice.add', 'voiceをアップロードする', [], ['class' => 'btn btn-outline-danger mt-2 mb-2']) !!}

@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ContactMail;
+
 
 class MatchingController extends Controller
 {
@@ -54,13 +57,21 @@ public function matching_done($id)
       // 認証済みユーザ（閲覧者）が、 idのユーザをマッチング希望する
         \Auth::user()->matching($id);
         $user = User::findOrFail($id);
+        
+           Mail::to(\Auth::user()->email)
+            ->send(new ContactMail());
+            
+            Mail::to($user->email)
+            ->send(new ContactMail());
+            
+            
+            
+            
   
       
         return view('users.matching_finish',['user'=>$user]);
         
-        // \Auth::user->
-        // $user->
-        // ログインユーザーと相手ユーザーにマッチング成功のお知らせメールを送信する
+      
 }
 
 

@@ -22,9 +22,6 @@
             </div>
         </aside>
     
-         
-         
-      
         <div class="col-sm-8">
                <nav class="nav nav-pills nav-fill mt-4">
             <a class="nav-item nav-link bg-dark active" href="#">voice</a>

@@ -189,5 +189,18 @@ class User extends Authenticatable
         // マッチング希望中ユーザの中に $useridのものが存在するか
         return $this->matchings()->where('matching_id', $userid)->exists();
     }
+    
+    public function matching_already()
+    {
+        
+             //ユーザがマッチング中のユーザを取得
+        $userIds = $this->matchings()->pluck('users.id')->toArray();
+       //相互マッチング中のユーザを取得
+        $matching_each = $this->m_requests()->whereIn('users.id', $userIds)->pluck('users.id')->toArray();
+       //相互マッチング中のユーザを返す
+        return $matching_each;
+    
+    }
+    
 
 }

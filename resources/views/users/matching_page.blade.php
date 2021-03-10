@@ -1,6 +1,7 @@
 @extends('users.login_layout')
 
 @section('content')
+ @if(empty($matching_each))
 <div class="text-center box">
 <h1>あなたとのマッチングを希望しているユーザー</h1>
 
@@ -8,9 +9,14 @@
     <p>※マッチング成立後は有料コンテンツとなります</p>
 </div>
 </div>
+@endif
 <div class="text-center">
-<p> <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+<p> <a class="btn btn-primary mt-3" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+  @if(empty($matching_each))
     あなたがマッチングのリクエストを出しているuser一覧はこちら
+    @else
+    あなたが出したマッチングリクエストの一覧
+    @endif
   </a>
 </p>
 <div class="collapse" id="collapseExample">
@@ -18,7 +24,12 @@
      @foreach ($matching as $muser) 
                  <h5> {!! link_to_route('show', $muser->name, ['id' => $muser->id]) !!} </h5>
                   {!! Form::open(['route' => ['matching_canceled', $muser->id], 'method' => 'delete']) !!}
+                  @if(empty($matching_each))
                          {!! Form::submit('リクエスト取り消し', ['class' => 'btn btn-lg btn-outline-danger btn-sm mb-3']) !!}
+                         @else
+                         {!! Form::submit('取り消し', ['class' => 'btn btn-lg btn-outline-danger btn-sm mb-3']) !!}
+                         @endif
+                         
                       {!! Form::close() !!}
                   @endforeach
 
@@ -27,10 +38,17 @@
 </div>
 
 <!--マッチング成立している場合は「このユーザーは既にマッチングが成立しているユーザーです。」-->
-<!--@if(Auth::user()->matchings() && Auth::user()->m_requests())-->
-<!--マッチング成立しています。-->
-<!--@endif-->
+@if(!empty($matching_each))
+<div class="text-center">
+    <br>
+<h1>このユーザーはマッチング済となりました。</h1>
+<br>
+<p>※もし、他ユーザーにマッチングリクエストを出している場合は速やかに上のボタンよりリクエストをお取り消しください。<br>
+マッチングが成功したユーザーに関しては取り消しボタンは押さないようにご注意ください。万が一マッチングが完了しているユーザーを取り消しした場合は
+再度「受託する」ボタンを押すことでマッチングし直すことができます。</p>
+</div>
 
+@else
 
 <div class="container">
             <div class="row">
@@ -71,5 +89,5 @@
                 
 
    
-   
+   @endif
 @endsection

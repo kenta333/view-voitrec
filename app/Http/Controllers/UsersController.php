@@ -152,8 +152,17 @@ class UsersController extends Controller
             
          $repuests = $auth_user->m_requests()->paginate(5);
           $matching = $auth_user->matchings()->get();
+          
+         $userIds = $auth_user->matchings()->pluck('users.id')->toArray();
+       //相互マッチング中のユーザを取得
+        $matching_each = $auth_user->m_requests()->whereIn('users.id', $userIds)->pluck('users.id')->toArray();
+       //相互マッチング中のユーザを返す
+       
+      
+      
+        
         if ($auth_user==$user) {
-            return view('users.matching_page',['requests'=>$repuests,'matching'=>$matching]);
+            return view('users.matching_page',['requests'=>$repuests,'matching'=>$matching,'matching_each'=>$matching_each]);
         }else{
           return view('users.matching_page2',[
             'user' => $user ]);

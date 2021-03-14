@@ -2,16 +2,16 @@
 
 @section('content')
  @if(empty($matching_each))
-<div class="text-center box">
+<div class="text-center mt-5">
 <h1>あなたとのマッチングを希望しているユーザー</h1>
 
-<div class="red-font">
+<div class="red_font">
     <p>※マッチング成立後は有料コンテンツとなります</p>
 </div>
 </div>
 @endif
 <div class="text-center">
-<p> <a class="btn btn-primary mt-3" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+<p> <a class="btn btn-dark mt-3" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
   @if(empty($matching_each))
     あなたがマッチングのリクエストを出しているuser一覧はこちら
     @else
@@ -55,13 +55,15 @@
                 @foreach ($requests as $user) 
                
            
-                <div class="col-md-4">
+                <div class="col-md-12">
             <div class="card text-center hover  mt-3">
                 <div class="card-header">
                     <h3 class="card-title">{!! link_to_route('show', $user->name, ['id' => $user->id]) !!}</h5></h3>
                 </div>
                 <div class="card-body">
-                   <a href="#"> <img src="/icon.jpg" alt="icon"></a>
+                    <div class="trim center">
+                   <img src="{{$user->file}}" alt="">
+                   </div>
                    <div class="card-text">
                        {!! Form::open(['route' => ['users.donepage', $user->id], 'method' => 'post']) !!}
                        {!! Form::submit('受諾する(マッチング成立)', ['class' => 'btn btn-lg btn-primary mt-3 mb-3']) !!}
@@ -71,7 +73,7 @@
                          {!! Form::submit('受諾しない', ['class' => 'btn btn-lg btn-outline-danger mt-3 mb-3']) !!}
                       {!! Form::close() !!}
                       
-                       <p class="red-font">※一度押したボタンは取り消しができませんので、よく確認の上ボタンを押してください</p>
+                       <p class="red_font">※一度押したボタンは取り消しができませんので、よく確認の上ボタンを押してください</p>
                    </div>
                 </div> 
             </div>

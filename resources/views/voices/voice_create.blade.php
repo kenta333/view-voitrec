@@ -7,25 +7,36 @@
  
             
              @include('commons.error')
-            
-                <div class="form-group">
-                    <div class="d-sm-flex flex-row">
-                    <img class="icon-image" src="/voiceicon.jpg" alt="">
-                    <img class="icon-image" src="/youtube-logo.jpg" alt="">
-                    </div>
-                    
-                
-
-            {!! Form::open(['route' => 'voice.store', 'files' => true]) !!}
-            
-            <div class="form-group">
-                    {!! Form::file('file', ['method'=>'post','enctype'=>'multipart/form-data']) !!}
-                  
+          <div class="container"> 
+     {!! Form::open(['route' => 'voice.store', 'files' => true]) !!}       
+     <div class="text-center">
+         <a class="btn" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+    　　　<div id="testbutton">
+        　</div>
+        　</a>
+            <div class="collapse" id="collapseExample">
+              <div class="card card-body">
+                <div class="form-group box">
+                    {!! Form::label('youtube_url', 'https://www.youtube.com/embed/VIDEO_ID」の「VIDEO_ID」のみを項目に入力してください　▼') !!}
+                    {!! Form::text('youtube_url', old('youtube_url'), ['class' => 'form-control']) !!}
+                    <br>
+                    <img src="/youtube.png" alt="youtube" width="100%" height="100%">
                 </div>
-            
-            
-            
-                <div class="form-group">
+              </div>
+            </div>
+              <h1>&#x261D; YouTube here! &#x261D;</h1>
+              </div>
+            <hr width="500">
+   </div>
+  
+            <br>
+<div class="text-center">
+　 <div class="form-group box">
+　     {!! Form::label('file', '●音声ファイルや動画ファイルのアップロードはこちら') !!}
+      {!! Form::file('file', ['method'=>'post','enctype'=>'multipart/form-data']) !!}
+  </div>
+  </div>
+                <div class="form-group ">
                     {!! Form::label('title', 'タイトル') !!}
                     {!! Form::text('title', old('title'), ['class' => 'form-control']) !!}
                 </div>
@@ -39,10 +50,9 @@
 <!--         <div class="input-group-text">URL</div>-->
 <!--        <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="YouTubeのURLをこちらに入力することでvoitrec上でも公開できます">-->
 <!--</div>-->
-                 <br>
-                  <br>
+               
 　　　　　　　 {{ csrf_field() }}
-                {!! Form::submit('アップロード', ['class' => 'btn btn-primary btn-block']) !!}
+                {!! Form::submit('アップロード', ['class' => 'btn btn-primary btn-block btn-lg ']) !!}
             {!! Form::close() !!}
              <br>
               <br>

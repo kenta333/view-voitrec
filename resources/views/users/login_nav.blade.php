@@ -11,7 +11,9 @@
 		<div>
 			<ul>
 				<li><a href="#">{!! link_to_route('users.list', '一般user一覧', []) !!}</a></li>
-				<li><a href="#">講師user一覧</a></li>
+			<li><a href="#">{!! link_to_route(	'users.t_list', '講師user一覧', []) !!}</a></li>
+				
+			
 			</ul>
 		</div>
 	</li>

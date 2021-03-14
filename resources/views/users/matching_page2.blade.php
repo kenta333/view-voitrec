@@ -5,7 +5,7 @@
 <!--このファイルはマッチングページの条件分岐のひとつです。ログインユーザーが自分以外のユーザーのページのマッチングページを押した場合はこのページを表示-->
 
   <div class="text-center mt-5">
-    <div class="red-font">
+    <div class="red_font">
     <p>※マッチング成立後は有料コンテンツとなります</p>
     </div>
           @if (Auth::user()->matching($user->id))
@@ -15,19 +15,21 @@
 <div class="container">
             <div class="row">
                 <div class="col-md-12">
-            <div class="card text-center hover  mt-3">
+            <div class="card text-center hover mt-3">
                 <div class="card-header">
                     <h3 class="card-title"> {!! link_to_route('show', $user->name, ['id' => $user->id]) !!}</h3>
                 </div>
                 <div class="card-body">
-                   <a href="#"> <img src="/icon.jpg" alt="icon"></a>
+                     <div class="trim center">
+                   <img src="{{$user->file}}" alt="">
+                   </div>
                    <div class="card-text">
                           {!! Form::open(['route' => ['user.matching', $user->id], 'method' => 'post']) !!}
                        {!! Form::submit('する', ['class' => 'btn btn-lg btn-primary mt-3 mb-3']) !!}
                        {!! Form::close() !!}
                        
                        {!! link_to_route('show', '戻る', [$user->id], ['class' => 'btn btn-lg btn-outline-danger mt-3 mb-3']) !!}
-                       <p class="red-font">※一度押したボタンは取り消しができませんので、よく確認の上ボタンを押してください</p>
+                       <p class="red_font">※一度押したボタンは取り消しができませんので、よく確認の上ボタンを押してください</p>
                    </div>
                 </div> 
             </div>

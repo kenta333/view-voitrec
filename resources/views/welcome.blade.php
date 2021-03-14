@@ -3,7 +3,7 @@
 @section('content')
 
 
-       <div class="center-text">
+       <div class="center_text">
          <h1><span class="logo">voiterc</span>はボイストレーニングマッチングサイトです。</h1>
          <br>
         <p>あなたの歌声は今よりもっと良くなる。</p>
@@ -16,9 +16,10 @@
         
         {{-- ユーザ登録ページへのリンク --}}
          {!! link_to_route('signup.get', '今すぐはじめる', [], ['class' => 'btn btn-lg btn-warning mt-3 mb-3']) !!}
-        <div class="btn btn-lg btn-info">講師の方はこちらから</div>
+         {!! link_to_route('signup_t.get', '講師の方はこちらから',[], ['class' => 'btn btn-lg btn-info mt-3 mb-3']) !!}
+
         </div>
-        <div class="under-icon">
+        <div class="under_icon">
            <a href="#"> <img src="under.png"></a>
           
         </div>

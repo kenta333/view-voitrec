@@ -19,7 +19,9 @@ class CreateVoicesTable extends Migration
             $table->string('title');
              $table->string('file')->nullable();
             $table->string('content');
+             $table->string('youtube_url')->nullable();
             $table->timestamps();
+            
             
              // 外部キー制約
             $table->foreign('user_id')->references('id')->on('users');

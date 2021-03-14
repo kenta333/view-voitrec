@@ -5,12 +5,23 @@
         <aside class="col-sm-4">
             <div class="card text-center mt-4">
                 <div class="card-header">
+                     @if($user->type==1)
+                    <div class ="red_font">
+                  [講師]
+                    </div>
+                     @else
+                    <div class ="blue_font">
+                  [一般]
+                    </div>
+                    @endif
                     <h3 class="card-title">{{$user->name}}</h3>
                 </div>
                 
                 <!--このユーザーはクリックしたユーザーのカードを表示する-->
                 <div class="card-body">
-                    <img src="/icon.jpg" alt="icon">
+                   <div class="trim_slim">
+                   <img src="{{$user->file}}" alt="">
+                   </div>
                     <h5>フォロー／{!! link_to_route('users.followings', $user->followings_count, ['id' => $user->id], []) !!}</h5>
                      <h5>フォロワー／{!! link_to_route('users.followers', $user->followers_count, ['id' => $user->id], []) !!}</h5>
                        
@@ -30,34 +41,36 @@
              <a class="nav-item nav-link bg-light " href="/users/{{$user->id}}/followers">フォロワー一覧</a>
         </nav>
                 
-                <!--フォローユーザーのみ読み取って表示する-->
- @foreach ($users as $user)  
-<div class="card mb-3 mt-4" style="max-width: 100%;">
-  <div class="row no-gutters">
-    <div class="col-md-4">
-     
-      <svg class="bd-placeholder-img" width="100%" height="250" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Image"><title>Placeholder</title><rect fill="#868e96" width="100%" height="100%"/><text fill="#dee2e6" dy=".3em" x="50%" y="50%">Image</text></svg>
-    </div>
-    <div class="col-md-8">
-<div class="card-body">
-        <div class="text-center"><h5 class="card-title"> {!! link_to_route('show', $user->name, ['id' => $user->id]) !!}</h5>
-
-         @include('user_follow.follow_button')
-        <ul class="list-group list-group-flush">
-    <li class="list-group-item">プロフィール</li>
-    <li class="list-group-item"><h5>{{$user->free}}</h4></li>
-    
-  </ul>
-  </div>
-    </div>
-    </div>
   
+     <!--フォローユーザーのみ読み取って表示する-->
+        @if (count($users) > 0)
+ @foreach ($users as $user)  
+<div class="media border">
+  <img class="mr-3 trim_slim" src="{{$user->file}}" alt="image">
+  <div class="media-body">
+  <h5> {!! link_to_route('show', $user->name, ['id' => $user->id]) !!}</h5>
+   @if($user->type==1)
+                    <div class ="red_font">
+                  [講師]
+                    </div>
+                     @else
+                    <div class ="blue_font">
+                  [一般]
+                    </div>
+                    @endif
+   {{$user->free}}
+         @if (Auth::id()!=$user->id)
+           <!--ユーザー一覧は自分も入っているため自分のカードにはフォローボタンを表示しない-->
+         @include('user_follow.follow_button')
+        @endif
   </div>
 </div>
+        
 
-  @endforeach
-  {{ $users->links() }}
-</div>
+@endforeach
+@endif
+<!--複製-->
+{{ $users->links() }}
 
 @endsection
 

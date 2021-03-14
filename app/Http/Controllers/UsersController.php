@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User; 
+use Storage;
 
 class UsersController extends Controller
 {
@@ -35,7 +36,7 @@ class UsersController extends Controller
      public function userslist()
         {
         // ユーザ一覧をidの降順で取得
-        $users = User::orderBy('id', 'desc')->paginate(5);
+        $users = User::orderBy('id', 'desc')->where('type', '=', '0')->paginate(5);
      
      
 
@@ -44,6 +45,22 @@ class UsersController extends Controller
             'users' => $users,
         ]);
     }
+    
+         public function users_t_list()
+        {
+        // ユーザ一覧をidの降順で取得
+        $users = User::orderBy('id', 'desc')->where('type', '=', '1')->paginate(5);
+     
+     
+
+        // ユーザ一覧ビューでそれを表示
+        return view('users.list_t_users', [
+            'users' => $users,
+        ]);
+    }
+    
+    
+    
     
     
         public function show($id)
@@ -60,6 +77,8 @@ class UsersController extends Controller
 
      public function edit($id)
     {
+        
+        
         // idの値でメッセージを検索して取得
         $user = User::findOrFail($id);
 
@@ -71,6 +90,11 @@ class UsersController extends Controller
     
      public function update(Request $request, $id)
     {
+          $request->validate([
+            'free' => 'required',
+            'gender' => 'required'
+           
+        ]);
            // idの値でメッセージを検索して取得
         $user = User::findOrFail($id);
         // プロフィールを更新
@@ -79,7 +103,13 @@ class UsersController extends Controller
         $user->like = $request->like;
         $user->free = $request->free;
         
-        
+ $file = $request->file('file');
+    if(isset($file)){
+      // バケットの`myprefix`フォルダへアップロード
+      $path = Storage::disk('s3')->putFile('/', $file, 'public');
+    
+      $user->file=Storage::disk('s3')->url($path);
+    } 
         $user->save();
 
         // ユーザー詳細画面へリダイレクトさせる

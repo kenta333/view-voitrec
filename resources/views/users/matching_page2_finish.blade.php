@@ -5,7 +5,7 @@
 <!--このファイルはマッチングページの条件分岐のひとつです。ログインユーザーが自分以外のユーザーのページのマッチングページを押した場合はこのページを表示-->
 
 <div class="text-center mt-5">
-<div class="red-font">
+<div class="red_font">
     <p>※マッチング成立後は有料コンテンツとなります</p>
 </div>
 <h3>{!! link_to_route('show', $user->name, ['id' => $user->id]) !!}さんへマッチングを希望しました。<br>
@@ -21,7 +21,9 @@
                 </div>
                      
                 <div class="card-body">
-                   <a href="#"> <img src="/icon.jpg" alt="icon"></a>
+                      <div class="trim center">
+                   <img src="{{$user->file}}" alt="">
+                   </div>
                 </div> 
             </div>
                 </div>

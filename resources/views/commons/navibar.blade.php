@@ -7,18 +7,18 @@
 		<div>
 			<ul>
 				<li><a href="#">{!! link_to_route('signup.get', '一般userで登録', []) !!}</a></li>
-				<li><a href="#">講師userで登録</a></li>
+				<li><a href="#">{!! link_to_route('signup_t.get', '講師userで登録', []) !!}</a></li>
 			</ul>
 		</div>
 	</li>
 	
 		<li>
-		<a href="#">ログイン<span class="caret"></span></a>
+		<a href="#">{!! link_to_route('login', 'ログイン')!!}</a>
 		<div>
-			<ul>
-				<li><a href="#">{!! link_to_route('login', '一般userでログイン')!!}</a></li>
-				<li><a href="#">講師userでログイン</a></li>
-			</ul>
+		
+				
+			
+		
 		</div>
 </ul>
 </div>

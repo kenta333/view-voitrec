@@ -15,6 +15,9 @@ Route::get('/', 'UsersController@index');
 
 // ユーザ登録
 Route::get('signup', 'Auth\RegisterController@showRegistrationForm')->name('signup.get');
+
+// 講師ユーザー登録ページへのget
+Route::get('signup_t', 'Auth\RegisterController@showRegistration_t_Form')->name('signup_t.get');
 Route::post('signup', 'Auth\RegisterController@register')->name('signup.post');
 
 // 認証
@@ -28,6 +31,9 @@ Route::get('logout', 'Auth\LoginController@logout')->name('logout.get');
     
     //一般user一覧
     Route::get('users.list', 'UsersController@userslist')->name('users.list');
+    
+    // 講師ユーザー一覧
+     Route::get('users.t_list', 'UsersController@users_t_list')->name('users.t_list');
     
     
 //プロフィール画面表示(ユーザー詳細)
@@ -78,8 +84,6 @@ Route::group(['middleware' => ['auth']], function () {
 Route::group(['middleware' => ['auth']], function () {
     Route::group(['prefix' => 'voice/{id}'], function () {
       
-      // コメント入力フォームへのget処理
-        Route::get('comment', 'CommentsController@create')->name('comment.create');
          // コメント入力内容のPOST処理
           Route::post('/', 'CommentsController@store')->name('comment.store');
           // コメントの削除

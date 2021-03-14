@@ -54,7 +54,7 @@ class RegisterController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8'],
              'gender' => ['required'],
-             'like' => ['required'],
+             
         ]);
     }
 
@@ -72,7 +72,12 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
                'gender'   => $data['gender'],
                'old'      => $data['old'],
-               'like'   => $data['like'],
+               'type'      => $data['type'],
         ]);
+    }
+    
+    public function showRegistration_t_Form(){
+        
+       return view('auth.register_t');
     }
 }

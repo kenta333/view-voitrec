@@ -18,7 +18,7 @@
             <div class="header">
            @include('commons.navibar')
            </div>
-           <div class="top-content">
+           <div class="top_content">
         <div class="container">
             {{-- エラーメッセージ --}}
             @include('commons.error')
@@ -28,7 +28,7 @@
             </div>
             </div>
             
-            <div class="how-to">
+            <div class="how_to">
                 <div class="wrapper">
     
                 <h1><span class="logo">voitrec</span>の使い方</h1>

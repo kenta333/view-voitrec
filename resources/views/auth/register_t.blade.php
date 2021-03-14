@@ -6,14 +6,14 @@
          <br>
           <br>
 
-        <h1>一般user用新規登録</h1>
+        <h1>講師user用新規登録</h1>
             <p class="mt-2">アカウントをお持ちの方は {!! link_to_route('login', 'こちらからログイン') !!}</p>
     </div>
 
     <div class="row">
         <div class="col-sm-6 offset-sm-3">
 
-            {!! Form::open(['route' => 'signup.post']) !!}
+         {!! Form::open(['route' => 'signup.post']) !!}
                 <div class="form-group">
                     {!! Form::label('name', 'ユーザー名') !!}
                     {!! Form::text('name', old('name'), ['class' => 'form-control']) !!}
@@ -41,14 +41,11 @@
                    {{Form::select('gender', ['男性' => '男性', '女性' => '女性'], '男性', ['class' => 'form-control','id' => 'selectEvalute'])}}
 
                     </div>
-                    
-                    
                 
-       
-                
-                    <div class="form-group none">
+                <!--ユーザータイプをここで送る。：画面表示はさせない。-->
+                 <div class="form-group none">
                     {!! Form::label('type', 'ユーザータイプ') !!}
-                    {!! Form::text('type',0, ['class' => 'form-control']) !!}
+                    {!! Form::text('type',1, ['class' => 'form-control']) !!}
                 </div>
                 
 

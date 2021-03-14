@@ -5,10 +5,21 @@
         <aside class="col-sm-4">
             <div class="card text-center mt-4">
                 <div class="card-header">
+                              @if($user->type==1)
+                    <div class ="red_font">
+                  [講師]
+                    </div>
+                     @else
+                    <div class ="blue_font">
+                  [一般]
+                    </div>
+                    @endif
                     <h3 class="card-title">{{$user->name}}</h3>
                 </div>
                 <div class="card-body">
-                    <img src="/icon.jpg" alt="icon">
+                     <div class="trim_slim">
+                   <img src="{{$user->file}}" alt="">
+                   </div>
                     <h5>フォロー／{!! link_to_route('users.followings', $user->followings_count, ['id' => $user->id], []) !!}</h5>
                      <h5>フォロワー／{!! link_to_route('users.followers', $user->followers_count, ['id' => $user->id], []) !!}</h5>
                      <!--フォローボタンはログインした自分のページには非表示で良いため-->

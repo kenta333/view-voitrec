@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-.top-content {
+.top_content {
     min-height:100vh;
     background-size: cover;
     background-image: url(/top-image.jpg);
@@ -92,6 +92,13 @@ ul {
      text-align: center;
 }
 
+footer {
+    background-color: gray;
+    height: 40px;
+    color: white;
+    text-align: center;
+}
+
 
 .logo {
 font-family: 'Seymour One', sans-serif;
@@ -99,7 +106,7 @@ font-family: 'Seymour One', sans-serif;
 
 }
 
-.center-text {
+.center_text {
     text-align: center;
     padding-top: 250px;
     font-family: 'Noto Serif JP', serif;
@@ -107,7 +114,7 @@ font-family: 'Seymour One', sans-serif;
 }
 
 
-.how-to{
+.how_to{
     font-family: 'Noto Serif JP', serif;
     padding-top: 50px;
      background-color: black;
@@ -116,14 +123,14 @@ font-family: 'Seymour One', sans-serif;
           	z-index:2;
        
 }
-.under-icon {
+.under_icon {
     text-align: center;
     margin-top: 45px;
     opacity: 0.7;
     
 }
 
-.under-icon:hover{
+.under_icon:hover{
     opacity: 1.0;
 }
 
@@ -143,18 +150,158 @@ font-family: 'Seymour One', sans-serif;
 }
 
 
-footer {
-    background-color: gray;
-    height: 40px;
-    color: white;
-    text-align: center;
-}
-
-.comment-block{
+.comment_block{
   box-shadow: 0 0 8px #808080;
   margin: 4px 8px;
   padding: 8px 8px;
   border-radius: 7px;
   margin-bottom: 40px;
-  
+   word-break:break-all;
+}
+
+#testbutton {
+	margin-top: 35px;
+  width: 270px;
+  height:90px;
+  border-radius:180px;
+  position:relative;
+  left:calc(50% - 132px);
+  top:calc(50% - 25px);
+  background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
+  cursor:pointer;
+  line-height:12px;
+}
+
+#testbutton:before {
+  content:'';
+  position:absolute;
+  display:block;
+  width:80%;
+  height:70%;
+  top:15%;
+  left:10%;
+  transition: 0.3s opacity ease-in-out;
+  filter:blur(15px);
+  opacity:0;
+  background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
+}
+
+#testbutton:hover:before {
+  opacity:1;
+  transition: 0.3s opacity ease-in-out;
+  filter:blur(25px);
+  background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);  
+  height: 100%;
+  width:100%;
+}
+
+#testbutton:after {
+
+  content:'YouTube:UP';
+  text-align:center;
+  line-height:60px;
+  font-size:32px;
+  color:rgba(235,235,235,1);
+  font-weight:bold;
+  position:absolute;
+  display:block;
+  border-radius:180px;
+  width:92%;
+  height:80%;
+  top:10%;
+  left:4%;  
+  background-color:rgb(19, 20, 22);
+}
+
+.card-size {
+    height: 540px;
+}
+
+.none{
+    display: none;
+}
+
+.trim {
+  position:relative;
+  overflow: hidden;
+  width:300px;
+  height:300px;
+  border-radius:50%;
+}
+.trim img{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  height:100%;
+}
+
+.trim_slim {
+  margin : 0 auto ;
+  position:relative;
+  overflow: hidden;
+  width:200px;
+  height:200px;
+  border-radius:50%;
+}
+.trim_slim img{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  height:100%;
+}
+
+.icon_up{
+      display: flex;
+  justify-content: center;
+  align-items: center;
+  word-break:break-all;
+
+}
+
+.trim_mini {
+  position:relative;
+  overflow: hidden;
+  width:65px;
+  height:65px;
+  border-radius:50%;
+}
+.trim_mini img{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  height:100%;
+}
+
+.border {
+       padding : 0.1em 0.5em ;
+    border : solid 1px #b3b3b3 ;
+    border-top : solid 1px #e0e0e0 ;
+    border-bottom : solid 1px #717171 ;
+    box-shadow : 0 2px 6px rgba(100, 100, 100, 0.3) ;
+    margin: 25px 0;
+}
+
+.position {
+    position: relative;
+}
+
+.position h2{
+    position: absolute;
+    top: 28px;
+    left: 30px;
+    opacity: 0.7;
+    
+}
+
+.center {
+    margin: 0 auto;
 }

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Voice extends Model
 {
         protected $fillable = [
-        'title', 'content','file'];
+        'title', 'content','file','youtube_url'];
     
     public function user()
     {

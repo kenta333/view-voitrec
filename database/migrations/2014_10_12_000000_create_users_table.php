@@ -20,11 +20,13 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->integer('old')->nullable();
             $table->string('free')->default("はじめまして。これからよろしくお願いします。");
-            $table->integer('gender')->nullable();
+            $table->string('gender')->nullable();
             $table->string('like')->nullable();
-            $table->integer('type')->default(1);
+            $table->integer('type');
             $table->rememberToken();
             $table->timestamps();
+            $table->string('file')->default("/voiceicon2.jpg");
+            
         });
     }
 

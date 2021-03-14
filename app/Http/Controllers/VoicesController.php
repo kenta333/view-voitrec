@@ -24,24 +24,35 @@ class VoicesController extends Controller
        $request->validate([
             'title' => 'required|max:255',
             'content' => 'required|max:255',
-            'file' => 'required'
            
         ]);
         
               //s3アップロード開始
+              
       $file = $request->file('file');
-      
+      if(isset($file)){
     
       // バケットの`myprefix`フォルダへアップロード
       $path = Storage::disk('s3')->putFile('/', $file, 'public');
+          $request->user()->voices()->create([
+           'file'=>Storage::disk('s3')->url($path),
+              'title' => $request->title,
+            'content' => $request->content,
+           
+            ]);
       
-        
+      }
+      
+       $youtube =$request->youtube_url;
+         if(isset($youtube)){
          $request->user()->voices()->create([
             'title' => $request->title,
             'content' => $request->content,
-            'file'=>Storage::disk('s3')->url($path)
+            'youtube_url' =>$youtube
         ]);
-      
+         }
+        
+    
 
       return redirect('/');
  

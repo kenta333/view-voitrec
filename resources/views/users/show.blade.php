@@ -6,10 +6,21 @@
         <aside class="col-sm-4">
             <div class="card text-center mt-4">
                 <div class="card-header">
+                       @if($user->type==1)
+                    <div class ="red_font">
+                  [講師]
+                    </div>
+                    @else
+                    <div class ="blue_font">
+                  [一般]
+                    </div>
+                    @endif
                     <h3 class="card-title">{{ $user->name }}</h3>
                 </div>
                 <div class="card-body">
-                    <img src="/icon.jpg" alt="icon">
+                    <div class="trim_slim">
+                   <img src="{{$user->file}}" alt="">
+                   </div>
                     <h5>フォロー／{!! link_to_route('users.followings', $user->followings_count, ['id' => $user->id], []) !!}</h5>
                      <h5>フォロワー／{!! link_to_route('users.followers', $user->followers_count, ['id' => $user->id], []) !!}</h5>
                         {!! link_to_route('users.mpage', 'マッチング', ['id' => $user->id], ['class' => 'btn btn-danger mt-2 mb-2']) !!}
@@ -34,9 +45,23 @@
         </nav>
      <div class="profile mt-2 container">
          <div class="jumbotron">
-             <h1 class="display-3">プロフィール</h1>
-             <p class="lead">ユーザー名：{{$user->name}}<br>
-             ユーザータイプ：{{$user->type}}<br>
+             <h1 class="display-3">{{$user->name}}</h1>
+               <div class="trim">
+                   <img src="{{$user->file}}" alt="">
+                   </div>
+             <hr width="100%">
+                    @if($user->type==1)
+                   <h2> <div class ="red_font">
+                  [講師user]
+                    </div></h2>
+                    @else
+                     <h2> <div class ="blue_font">
+                  [一般user]
+                    </div></h2>
+                    
+                    @endif<br>
+                    
+          
              性別：{{$user->gender}}<br>
              年齢：{{$user->old}}<br>
              好きなアーティスト：{{$user->like}}<br>

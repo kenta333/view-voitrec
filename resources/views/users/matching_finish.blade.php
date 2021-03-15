@@ -1,6 +1,6 @@
  @extends('users.login_layout')
             
-     <div class="matching_image">
+  
             
  @section('content')
             
@@ -8,6 +8,10 @@
          <br><br><br><br>
             <h1>マッチング成立となったユーザーのお知らせ</h1>
         </div>
+        
+        
+        
+        
             <div class="container mt-5">
                         <div class="row">
                             <div class="col-md-4">
@@ -16,13 +20,13 @@
                                 <h3 class="card-title"> <a href="/">{{Auth::user()->name}}</h3></a>
                             </div>
                                <div class="card-body">
-                                  <div class="trim">
+                                  <div class="trim_slim">
                    <img src="{{Auth::user()->file}}" alt="">
                    </div>
                              </div> 
                                </div>
                        </div>
-                            <div class="col-md-4 text-center">
+                            <div class="col-md-4 text-center icon_up">
                                 <img src="/matching.png" alt="image">
                             </div>
                             <!--マッチングユーザー境目-->
@@ -32,7 +36,7 @@
                                 <h3 class="card-title">{!! link_to_route('show', $user->name, ['id' => $user->id]) !!}</h3>
                             </div>
                                 <div class="card-body">
-                                 <div class="trim">
+                                 <div class="trim_slim">
                    <img src="{{$user->file}}" alt="">
                    </div>
                                 </div> 
@@ -42,8 +46,8 @@
             </div>
             <br>
             <div class="text-center">
-            <p><h3>おめでとうございます!!</h3><br>上記ユーザーのマッチングが成功しました。
-            ご登録頂いているメールアドレスへ確認用メールをお送りします。<br>
+      <h3>上記ユーザーのマッチングが成功しました。<br>
+            ご登録頂いているメールアドレスへ確認用メールをお送りします。</h3><br>
             
             メール内容のURLにアクセス頂き、さっそく今後のカリキュラムを作成してください。</p>
             

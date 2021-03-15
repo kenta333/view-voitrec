@@ -102,7 +102,7 @@ Route::group(['middleware' => ['auth']], function () {
 
             // マッチング成立画面(受諾ボタンを押した時のget処理)
        
-          Route::post('/', 'MatchingController@matching_done')->name('users.donepage');
+          Route::get('/done', 'MatchingController@matching_done')->name('users.donepage');
          
         // マッチング拒否のデリート処理(受諾しないを押した時の処理)
           Route::delete('matching/delete', 'MatchingController@destroy')->name('user.unmatching');

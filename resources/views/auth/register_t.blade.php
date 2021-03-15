@@ -6,7 +6,7 @@
          <br>
           <br>
 
-        <h1>講師user用新規登録</h1>
+        <h1>講師ユーザー新規登録用フォーム</h1>
             <p class="mt-2">アカウントをお持ちの方は {!! link_to_route('login', 'こちらからログイン') !!}</p>
     </div>
 
@@ -53,7 +53,7 @@
                   <br>
                  
 
-                {!! Form::submit('登録', ['class' => 'btn btn-warning btn-block']) !!}
+                {!! Form::submit('登録', ['class' => 'btn btn-info btn-block']) !!}
             {!! Form::close() !!}
              <br>
               <br>

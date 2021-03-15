@@ -22,10 +22,14 @@
 <div class="collapse" id="collapseExample">
   <div class="card card-body">
      @foreach ($matching as $muser) 
+    
                  <h5> {!! link_to_route('show', $muser->name, ['id' => $muser->id]) !!} </h5>
+                    <div class="trim_mini center">
+                   <img src="{{$muser->file}}" alt="">
+                   </div>
                   {!! Form::open(['route' => ['matching_canceled', $muser->id], 'method' => 'delete']) !!}
                   @if(empty($matching_each))
-                         {!! Form::submit('リクエスト取り消し', ['class' => 'btn btn-lg btn-outline-danger btn-sm mb-3']) !!}
+                         {!! Form::submit('リクエスト取り消し', ['class' => 'btn btn-lg btn-outline-danger btn-sm mb-3 mt-1']) !!}
                          @else
                          {!! Form::submit('取り消し', ['class' => 'btn btn-lg btn-outline-danger btn-sm mb-3']) !!}
                          @endif
@@ -41,12 +45,30 @@
 @if(!empty($matching_each))
 <div class="text-center">
     <br>
-<h1>このユーザーはマッチング済となりました。</h1>
+<h1>マッチングは下記ユーザーと既に完了しております</h1>
 <br>
-<p>※もし、他ユーザーにマッチングリクエストを出している場合は速やかに上のボタンよりリクエストをお取り消しください。<br>
-マッチングが成功したユーザーに関しては取り消しボタンは押さないようにご注意ください。万が一マッチングが完了しているユーザーを取り消しした場合は
-再度「受託する」ボタンを押すことでマッチングし直すことができます。</p>
+  @foreach ($requests as $cuser) 
+  @if(Auth::user()->is_matched($cuser->id))
+<div class="container">
+            <div class="row">
+                <div class="col-md-12">
+            <div class="card text-center hover mt-3">
+                <div class="card-header">
+                    <h3 class="card-title"> {!! link_to_route('show', $cuser->name, ['id' => $cuser->id]) !!}</h3>
+                </div>
+                <div class="card-body">
+                     <div class="trim center">
+                   <img src="{{$cuser->file}}" alt="">
 </div>
+
+                </div>
+           </div>
+            </div>
+         </div>
+</div>
+@endif
+@endforeach
+
 
 @else
 
@@ -65,7 +87,7 @@
                    <img src="{{$user->file}}" alt="">
                    </div>
                    <div class="card-text">
-                       {!! Form::open(['route' => ['users.donepage', $user->id], 'method' => 'post']) !!}
+                       {!! Form::open(['route' => ['users.donepage', $user->id], 'method' => 'get']) !!}
                        {!! Form::submit('受諾する(マッチング成立)', ['class' => 'btn btn-lg btn-primary mt-3 mb-3']) !!}
                        {!! Form::close() !!}
                        

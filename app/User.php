@@ -190,6 +190,16 @@ class User extends Authenticatable
         return $this->matchings()->where('matching_id', $userid)->exists();
     }
     
+          public function is_requests($id)
+    {
+        // マッチング希望中ユーザの中に $idのものが存在するか
+        return  $this->m_requests()->where('matching_id', $id)->exists();
+      
+    }
+    
+    
+    
+    
     public function matching_already()
     {
         
@@ -200,6 +210,15 @@ class User extends Authenticatable
        //相互マッチング中のユーザを返す
         return $matching_each;
     
+    }
+    
+    // マッチングしているユーザーをリターンで返す
+      public function is_matched($id)
+    {
+        // マッチング希望中ユーザの中に $useridのものが存在するか
+        if($this->matchings()->where('matching_id', $id)->exists()){
+            return $id;
+        }
     }
     
 

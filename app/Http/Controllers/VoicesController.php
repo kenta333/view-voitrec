@@ -67,11 +67,21 @@ class VoicesController extends Controller
         // ユーザの投稿一覧を作成日時の降順で取得
         $voices = $user->voices()->orderBy('created_at', 'desc')->paginate(3);
          $user->loadRelationshipCounts() ;
+         
+                 
+    //   マッチングボタン制御用
+  $auth_user = \Auth::user();
+            $userIds = $auth_user->matchings()->pluck('users.id')->toArray();
+       //相互マッチング中のユーザを取得
+        $matching_each = $auth_user->m_requests()->whereIn('users.id', $userIds)->pluck('users.id')->toArray();
+       //相互マッチング中のユーザを返す
+        
 
         // ユーザ詳細ビューでそれらを表示
         return view('voices.show', [
             'user' => $user,
             'voices' => $voices,
+               'matching_each'=>$matching_each
         ]);
     }
     
@@ -95,16 +105,14 @@ class VoicesController extends Controller
         // idの値でvoiceを検索して取得
         $voice = Voice::findOrFail($id);
         $user = $voice->user;
-        
-       
 
-        
         
 
         // voice詳細ビューでそれを表示
         return view('voices.voice_show', [
             'voice' => $voice,
              'user' => $user,
+          
           
         ]);
     }

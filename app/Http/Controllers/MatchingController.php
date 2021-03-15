@@ -16,16 +16,19 @@ class MatchingController extends Controller
         // 認証済みユーザ（閲覧者）が、 idのユーザをマッチング希望する
         \Auth::user()->matching($id);
         $user = User::findOrFail($id);
-//   まだ実装できていないが、もし既にリクエストがきているユーザーにマッチング希望が出ていた場合はマッチング完了の画面を出すコードをここに
-    //   if(\Auth::user()->matchings()->where('matching_id', $user)->exists() && \Auth::user()->m_requests()->where('matching_id', $user)->exists()){
       
-    //  return view('users.matching_finish',['user'=>$user]);
+      
+//   既にマッチング希望されていたユーザーに希望を出した場合はマッチング成立なので成立画面へ遷移する。
+      if($user->is_matching(\Auth::id())){
+         
+      
+   return redirect()->action('MatchingController@matching_done',['id' => $user]);
      
-    //   }else{
+      }else{
      
       
         return view('users.matching_page2_finish',['user'=>$user]);
-    // }
+    }
     }
        public function destroy($id)
     {
@@ -58,17 +61,15 @@ public function matching_done($id)
         \Auth::user()->matching($id);
         $user = User::findOrFail($id);
         
+        // ここの処理の時に両ユーザーの中間テーブルを削除する
+        // (マッチングユーザーのidだけを除いて)
+        
            Mail::to(\Auth::user()->email)
             ->send(new ContactMail());
             
             Mail::to($user->email)
             ->send(new ContactMail());
             
-            
-            
-            
-  
-      
         return view('users.matching_finish',['user'=>$user]);
         
       

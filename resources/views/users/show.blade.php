@@ -23,8 +23,13 @@
                    </div>
                     <h5>フォロー／{!! link_to_route('users.followings', $user->followings_count, ['id' => $user->id], []) !!}</h5>
                      <h5>フォロワー／{!! link_to_route('users.followers', $user->followers_count, ['id' => $user->id], []) !!}</h5>
+                     @if(empty($matching_each))
                         {!! link_to_route('users.mpage', 'マッチング', ['id' => $user->id], ['class' => 'btn btn-danger mt-2 mb-2']) !!}
                         <span class= "badge badge-pill badge-danger"> {{ $user->m_requests_count}}</span>
+                            @elseif (Auth::id()==$user->id)
+                           {!! link_to_route('users.mpage', 'マッチング', ['id' => $user->id], ['class' => 'btn btn-danger mt-2 mb-2']) !!}
+                        <span class= "badge badge-pill badge-danger"> {{ $user->m_requests_count}}</span>
+                          @endif 
                         @if (Auth::id()!=$user->id)
                      @include('user_follow.follow_button')
                      @endif

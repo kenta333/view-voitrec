@@ -68,10 +68,18 @@ class UsersController extends Controller
         // idの値でユーザを検索して取得
         $user = User::findOrFail($id);
          $user->loadRelationshipCounts() ;
+         
+        //  マッチングボタンの表示制御用
+          $auth_user = \Auth::user();
+            $userIds = $auth_user->matchings()->pluck('users.id')->toArray();
+       //相互マッチング中のユーザを取得
+        $matching_each = $auth_user->m_requests()->whereIn('users.id', $userIds)->pluck('users.id')->toArray();
+       //相互マッチング中のユーザを返す
 
         // ユーザ詳細ビューでそれを表示
         return view('users.show', [
             'user' => $user,
+            'matching_each'=>$matching_each
         ]);
     }
 
@@ -188,9 +196,7 @@ class UsersController extends Controller
         $matching_each = $auth_user->m_requests()->whereIn('users.id', $userIds)->pluck('users.id')->toArray();
        //相互マッチング中のユーザを返す
        
-      
-      
-        
+       
         if ($auth_user==$user) {
             return view('users.matching_page',['requests'=>$repuests,'matching'=>$matching,'matching_each'=>$matching_each]);
         }else{

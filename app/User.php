@@ -156,14 +156,7 @@ class User extends Authenticatable
         {
                $exist = $this->is_matching($userid);
 
-        // 対象が自分自身かどうかの確認
-
-        $its_me = $this->id == $userid;
-
- 
-   
-        
-            if ($exist || $its_me) {
+            if ($exist) {
             // すでにマッチングしていれば何もしない
             return false;
         } else {

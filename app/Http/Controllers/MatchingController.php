@@ -58,9 +58,15 @@ public function matching_done($id)
 {
     
       // 認証済みユーザ（閲覧者）が、 idのユーザをマッチング希望する
-        \Auth::user()->matching($id);
-        $user = User::findOrFail($id);
+           $user = User::findOrFail($id);
         $auth= \Auth::user();
+        
+        \Auth::user()->matchings()->detach();
+      $user->matchings()->detach();
+      
+        \Auth::user()->matching($id);
+         $user->matching($auth);
+   
         
         
            Mail::to(\Auth::user()->email)

@@ -55,7 +55,7 @@
             </div>
             </div>
             <footer>
-                開発者へお問い合わせ／プライバシーポリシー  
+               ©2021/voitrec/kk
             </footer>
 
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>

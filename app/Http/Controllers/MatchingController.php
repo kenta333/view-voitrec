@@ -61,6 +61,9 @@ public function matching_done($id)
            $user = User::findOrFail($id);
         $auth= \Auth::user();
         
+                       // ここの処理の時に両ユーザーの中間テーブルを削除する
+        // (マッチングユーザーのidだけを除いて)
+
         \Auth::user()->matchings()->detach();
       $user->matchings()->detach();
       
@@ -75,9 +78,7 @@ public function matching_done($id)
             Mail::to($user->email)
             ->send(new ContactMail());
             
-                // ここの処理の時に両ユーザーの中間テーブルを削除する
-        // (マッチングユーザーのidだけを除いて)
-
+ 
         
             
         return view('users.matching_finish',['user'=>$user]);

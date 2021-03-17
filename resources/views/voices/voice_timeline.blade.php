@@ -2,7 +2,10 @@
 
 @section('content')
 <h4>最近公開されたコンテンツ</h4>
-
+<div class="red_font">
+    <p>★・・・講師ユーザー</p>
+    </div>
+     
 <div class="container">
             <div class="row">
                 @if (count($voices) > 0)

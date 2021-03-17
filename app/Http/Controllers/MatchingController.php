@@ -68,7 +68,7 @@ public function matching_done($id)
       $user->matchings()->detach();
       
         \Auth::user()->matching($id);
-         $user->matching($auth);
+         $user->matching($auth->id);
    
         
         

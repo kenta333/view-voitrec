@@ -305,3 +305,41 @@ font-family: 'Seymour One', sans-serif;
 .center {
     margin: 0 auto;
 }
+
+.flame09 {
+width: 100%;
+background-color: gray;
+opacity: 0.9;
+box-shadow: 0 0 5px 3.5px #a9a9a9;
+border-radius: 20px;
+margin: 3px 15px;
+}
+
+.flame09:hover{
+    opacity: 1;
+}
+
+
+.checkbox {
+background-color: #373740;
+border-radius: 4px;
+font-weight: 700;
+color: #FFF;
+font-size: .85em;
+letter-spacing: 4px;
+text-decoration: none;
+font-family: sans-serif;
+text-align: center;
+width: 320px;
+padding: 10px 0;
+cursor: pointer;
+display: block;
+margin: 0 auto;
+transition: background-color 150ms ease-in;
+
+
+}
+
+.checkbox:hover {
+background-color: #ff5847;
+}

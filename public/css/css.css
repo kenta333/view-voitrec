@@ -86,7 +86,9 @@ ul {
 
 .logo {
 font-family: 'Seymour One', sans-serif;
- font-size: 42px;
+ font-size: 50px;
+
+ 
 }
 
 .hover{
@@ -126,4 +128,15 @@ font-family: 'Seymour One', sans-serif;
 		color: blue;
 	font-weight: bold;
 	opacity: 0.6;
+}
+.box21{
+    padding: 0.5em 1em;
+    background: -moz-linear-gradient(#ffb03c, #ff708d);
+    background: -webkit-linear-gradient(#ffb03c, #ff708d);
+    background: linear-gradient(to right, #ffb03c, #ff708d);
+    color: #FFF;
+}
+.box21 p {
+    margin: 0; 
+    padding: 0;
 }

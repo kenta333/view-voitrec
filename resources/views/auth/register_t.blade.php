@@ -11,9 +11,29 @@
     </div>
 
     <div class="row">
-        <div class="col-sm-6 offset-sm-3">
+            <div class="col-sm-5 offset-sm-1 text-center flame09">
+                <br>
+               <h2>講師ユーザーポリシー</h2>
+               <p>※必ず確認の上でご登録のほどお願いします。</p>
+               <br>
+              <h5><<講師ユーザーの条件>></h5><br>
+              <p>-下記のいずれか一つでも当てはまる方-</p>
+             
+<p>・過去にボイストレーナーとしての経験がある方。<br>
+・ボーカリストの育成経験がある方。<br>
+・ボーカリストとしてプロフェッショナルであり、自身がボーカリストとして実務経験のある方。<br>
+<br>
+ {!! Form::open(['route' => 'signup.post']) !!}
+<div class="custom-control custom-checkbox custom-control-inline checkbox input">
+{{Form::checkbox('type', '1', false, ['class'=>'custom-control-input','id'=>'type'])}}
+{{Form::label('type','&nbsp;&nbsp;私は条件を満たしています',['class'=>'custom-control-label'])}}
+</div>
+<br>
 
-         {!! Form::open(['route' => 'signup.post']) !!}
+               </div> 
+        <div class="col-sm-5 offset-sm-1 mt-3">
+
+        
                 <div class="form-group">
                     {!! Form::label('name', 'ユーザー名') !!}
                     {!! Form::text('name', old('name'), ['class' => 'form-control']) !!}
@@ -41,12 +61,7 @@
                    {{Form::select('gender', ['男性' => '男性', '女性' => '女性'], '男性', ['class' => 'form-control','id' => 'selectEvalute'])}}
 
                     </div>
-                
-                <!--ユーザータイプをここで送る。：画面表示はさせない。-->
-                 <div class="form-group none">
-                    {!! Form::label('type', 'ユーザータイプ') !!}
-                    {!! Form::text('type',1, ['class' => 'form-control']) !!}
-                </div>
+   
                 
 
                  <br>
@@ -58,6 +73,9 @@
              <br>
               <br>
                <br>
+              
         </div>
+     
+     
     </div>
 @endsection

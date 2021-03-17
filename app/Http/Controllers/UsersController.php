@@ -195,13 +195,13 @@ class UsersController extends Controller
        //相互マッチング中のユーザを取得
         $matching_each = $auth_user->m_requests()->whereIn('users.id', $userIds)->pluck('users.id')->toArray();
        //相互マッチング中のユーザを返す
-       
-       
+       $already= $user->matching_already();
+
         if ($auth_user==$user) {
             return view('users.matching_page',['requests'=>$repuests,'matching'=>$matching,'matching_each'=>$matching_each]);
         }else{
           return view('users.matching_page2',[
-            'user' => $user ]);
+            'user' => $user,'already'=> $already]);
         }
     }
 }

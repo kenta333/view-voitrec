@@ -19,10 +19,7 @@
          {!! link_to_route('signup_t.get', '講師の方はこちらから',[], ['class' => 'btn btn-lg btn-info mt-3 mb-3']) !!}
 
         </div>
-        <div class="under_icon">
-           <a href="#"> <img src="under.png"></a>
-          
-        </div>
+ 
 
     @endsection
     

@@ -110,7 +110,7 @@ Route::group(['middleware' => ['auth']], function () {
          
         // マッチング希望送信ルーティング
           Route::post('matching.request', 'MatchingController@store')->name('user.matching');
-          Route::get('matching.request', 'MatchingController@check')->name('matching.request');
+         
           
 });
     });

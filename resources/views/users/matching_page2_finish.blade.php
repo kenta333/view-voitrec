@@ -6,7 +6,7 @@
 
 <div class="text-center mt-5">
 <div class="red_font">
-    <p>※マッチング成立後は有料コンテンツとなります</p>
+    <p>※マッチング成立後は有料コンテンツとなります。</p>
 </div>
 <h3>{!! link_to_route('show', $user->name, ['id' => $user->id]) !!}さんへマッチングを希望しました。<br>
 相手方が受諾した場合、マッチング成立のお知らせメールが届きます。</h3>

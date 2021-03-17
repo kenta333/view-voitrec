@@ -6,7 +6,7 @@
 <h1>あなたとのマッチングを希望しているユーザー</h1>
 
 <div class="red_font">
-    <p>※マッチング成立後は有料コンテンツとなります</p>
+    <p>※マッチング成立後は有料コンテンツとなります。</p>
 </div>
 </div>
 @endif
@@ -45,7 +45,7 @@
 @if(!empty($matching_each))
 <div class="text-center">
     <br>
-<h1>マッチングは下記ユーザーと既に完了しております</h1>
+<h1>マッチングは下記ユーザーと既に完了しております。</h1>
 <br>
   @foreach ($requests as $cuser) 
   @if(Auth::user()->is_matched($cuser->id))
@@ -95,7 +95,7 @@
                          {!! Form::submit('受諾しない', ['class' => 'btn btn-lg btn-outline-danger mt-3 mb-3']) !!}
                       {!! Form::close() !!}
                       
-                       <p class="red_font">※一度押したボタンは取り消しができませんので、よく確認の上ボタンを押してください</p>
+                       <p class="red_font">※一度押したボタンは取り消しができませんので、よく確認の上ボタンを押してください<。/p>
                    </div>
                 </div> 
             </div>

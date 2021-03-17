@@ -6,10 +6,17 @@
 
   <div class="text-center mt-5">
     <div class="red_font">
-    <p>※マッチング成立後は有料コンテンツとなります</p>
+    <p>※マッチング成立後は有料コンテンツとなります。</p>
     </div>
-          @if (Auth::user()->matching($user->id))
-           <h3> {!! link_to_route('show', $user->name, ['id' => $user->id]) !!}さんへマッチングを希望するお知らせをしますか？</h3>
+    @if (empty($already))
+          @if (Auth::user()->is_matched($user->id))
+         <h2>このユーザーへは既にマッチングのリクエスト済です。</h2>
+         
+         
+   @else
+   @if(Auth::user()->type != $user->type)
+                  <h3> {!! link_to_route('show', $user->name, ['id' => $user->id]) !!}さんへマッチングを希望するお知らせをしますか？</h3>
+                  @endif
   </div>
 
 <div class="container">
@@ -24,12 +31,17 @@
                    <img src="{{$user->file}}" alt="">
                    </div>
                    <div class="card-text">
+                       @if(Auth::user()->type != $user->type)
                           {!! Form::open(['route' => ['user.matching', $user->id], 'method' => 'post']) !!}
                        {!! Form::submit('する', ['class' => 'btn btn-lg btn-primary mt-3 mb-3']) !!}
                        {!! Form::close() !!}
+                       @else
+                       <h3>※このユーザーへはマッチングリクエストはできません。<br>
+                       一般ユーザー同士や講師ユーザー同士でマッチングをすることはできません。</h3>
+                       @endif
                        
                        {!! link_to_route('show', '戻る', [$user->id], ['class' => 'btn btn-lg btn-outline-danger mt-3 mb-3']) !!}
-                       <p class="red_font">※一度押したボタンは取り消しができませんので、よく確認の上ボタンを押してください</p>
+                       <p class="red_font">※一度押したボタンは取り消しができませんので、よく確認の上ボタンを押してください。</p>
                    </div>
                 </div> 
             </div>
@@ -54,8 +66,10 @@
 
 </div>
 
-   @else
-                <h2>このユーザーへは既にマッチングのリクエスト済です。</h2>
                 @endif
+                @else
+               <h2>こちらのユーザーは現在、他ユーザーとマッチング済の状態です。</h2> 
+                {!! link_to_route('show', '戻る', [$user->id], ['class' => 'btn btn-lg btn-outline-danger mt-3 mb-3']) !!}
+               @endif
 
 @endsection

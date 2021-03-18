@@ -8,6 +8,7 @@
             
              @include('commons.error')
           <div class="container"> 
+          <div class="col-lg-12">
      {!! Form::open(['route' => 'voice.store', 'files' => true]) !!}       
      <div class="text-center">
          <a class="btn" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
@@ -16,7 +17,7 @@
         　</a>
             <div class="collapse" id="collapseExample">
               <div class="card card-body">
-                <div class="form-group box">
+                <div class="form-group box col-12">
                     {!! Form::label('youtube_url', 'https://www.youtube.com/embed/VIDEO_ID」の「VIDEO_ID」のみを項目に入力してください　▼') !!}
                     {!! Form::text('youtube_url', old('youtube_url'), ['class' => 'form-control']) !!}
                     <br>
@@ -46,10 +47,7 @@
                     {{Form::textarea('content', null, ['class' => 'form-control', 'id' => 'textareaRemarks', 'placeholder' => 'ここにあなたの歌に関わる悩みや思っていることを入力しましょう。', 'rows' => '10'])}}
                 </div><br>
                 
-<!--<div class="input-group-prepend">-->
-<!--         <div class="input-group-text">URL</div>-->
-<!--        <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="YouTubeのURLをこちらに入力することでvoitrec上でも公開できます">-->
-<!--</div>-->
+
                
 　　　　　　　 {{ csrf_field() }}
                 {!! Form::submit('アップロード', ['class' => 'btn btn-primary btn-block btn-lg ']) !!}
@@ -63,7 +61,7 @@
         </div>
         
 
-   
+   </div>
     
   
 

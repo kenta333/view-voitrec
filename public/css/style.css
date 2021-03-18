@@ -343,3 +343,17 @@ transition: background-color 150ms ease-in;
 .checkbox:hover {
 background-color: #ff5847;
 }
+
+@media (max-width:800px){
+	
+	.center_text {
+		margin-top: -150px;
+		font-size: 17px;
+	}
+	.center_text .logo  {
+	    font-size: 67px;
+	    display: block;
+	}
+}
+
+

@@ -2,7 +2,7 @@
 @section('content')
 
 <div class="row">
-        <aside class="col-sm-4">
+        <aside class="col-lg-4">
             <div class="card text-center mt-4">
                 <div class="card-header">
                          @if($user->type==1)
@@ -33,7 +33,7 @@
             </div>
         </aside>
     
-        <div class="col-sm-8">
+        <div class="col-lg-8">
                <nav class="nav nav-pills nav-fill mt-4">
             <a class="nav-item nav-link bg-dark active" href="#">voice</a>
             

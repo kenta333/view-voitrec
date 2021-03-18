@@ -9,6 +9,7 @@
             <br>
             @include('commons.error')
             <h1 class="text-center">マイプロフィール編集</h1>
+            
 
             {!! Form::open(['route' => ['users.update',$user->id], 'method' => 'put','enctype'=>'multipart/form-data']) !!}
                  
@@ -27,10 +28,11 @@
                     {!! Form::text('old', $user->old, ['class' => 'form-control']) !!}
                 </div>
                 
-                   <div class="form-group">
-                    {!! Form::label('gender', '性別') !!}
-                    {!! Form::text('gender', $user->gender, ['class' => 'form-control']) !!}
-                </div>
+                  <div class="form-group pb-3">
+                    {{Form::label('gender','性別')}}
+                   {{Form::select('gender', ['男性' => '男性', '女性' => '女性'], $user->gender, ['class' => 'form-control','id' => 'selectEvalute'])}}
+
+                    </div>
                 
                  <div class="form-group">
                     {!! Form::label('like', '好きなアーティスト') !!}

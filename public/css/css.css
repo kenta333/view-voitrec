@@ -4,7 +4,6 @@
 	box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.055);
 	color: #888888;
 	display: block;
-	margin: 1em 1%;
 	overflow: hidden;
 	;
 
@@ -103,6 +102,7 @@ font-family: 'Seymour One', sans-serif;
     background-color: #eee;
     padding: 2em;
     margin-bottom: 1em;
+    word-break:break-all;
 }
 
 .red_font {
@@ -139,4 +139,124 @@ font-family: 'Seymour One', sans-serif;
 .box21 p {
     margin: 0; 
     padding: 0;
+}
+
+@media (min-width:800px){
+	.view-port-lost{
+		display: none;
+	}
+}
+
+@media (max-width:800px){
+	
+	.cp_navi{
+		display: none;
+	}
+	
+.hamburger {
+  display : block;
+  position: fixed;
+  z-index : 3;
+  right : 13px;
+  top   : 12px;
+  width : 82px;
+  height: 82px;
+  cursor: pointer;
+  text-align: center;
+  -webkit-transition: 0.5s all;
+  -moz-transition   : 0.5s all;
+  transition        : 0.5s all;
+  background-color: #dddddd;
+  border-radius: 50%;
+}
+.hamburger span {
+  display : block;
+  position: absolute;
+  width   : 30px;
+  height  : 2px ;
+  left    : 6px;
+  background : #555;
+}
+.hamburger span:nth-child(1) {
+  top: 18px;
+   left    : 16px;
+    width: 47px;
+}
+.hamburger span:nth-child(2) {
+  top: 38px;
+   left    : 16px;
+    width: 47px;
+}
+.hamburger span:nth-child(3) {
+  top: 58px;
+   left    : 16px;
+   width: 47px;
+}
+
+/* ナビ開いてる時のボタン */
+.hamburger.active{
+  -webkit-transform: rotate(360deg);
+  transform: rotate(360deg);
+}
+.hamburger.active span:nth-child(1) {
+  top : 38px;
+  left: 16px;
+  background : #fff;
+  -webkit-transform: rotate(-45deg);
+  -moz-transform   : rotate(-45deg);
+  transform        : rotate(-45deg);
+}
+.hamburger.active span:nth-child(2) {
+  top: 38px;
+  background : #fff;
+  -webkit-transform: rotate(45deg);
+  -moz-transform   : rotate(45deg);
+  transform        : rotate(45deg);
+}
+.hamburger.active span:nth-child(3) {
+  opacity: 0;
+}
+
+nav.globalMenuSp {
+  position: fixed;
+  z-index : 2;
+  top  : 0;
+  left : 0;
+  color: #fff;
+  background: rgba(0,0,0,0.7);
+  text-align: center;
+  width: 100%;
+  display: none;
+}
+
+nav.globalMenuSp ul {
+  margin: 0 auto;
+  padding: 0;
+  width: 100%;
+}
+
+nav.globalMenuSp ul li {
+  list-style-type: none;
+  padding: 0;
+  width: 100%;
+  transition: .4s all;
+}
+nav.globalMenuSp ul li:last-child {
+  padding-bottom: 0;
+}
+nav.globalMenuSp ul li:hover{
+  background :#ddd;
+}
+
+nav.globalMenuSp ul li a {
+  display: block;
+  color: #fff;
+  padding: 1em 0;
+  text-decoration :none;
+}
+
+/* このクラスを、jQueryで付与・削除する */
+nav.globalMenuSp.active {
+  display: inline-block;
+}
 }

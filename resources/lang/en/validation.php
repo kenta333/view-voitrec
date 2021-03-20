@@ -109,6 +109,7 @@ return [
     'name'=>'ユーザー名',
     
     'content'=>'詳細コメント',
-    'title'=>'タイトル'],
+    'title'=>'タイトル',
+    'youtube_url'=>'YouTubeのリンクかファイルアップロードのいずれか',]
 
 ];

@@ -27,6 +27,8 @@ class VoicesController extends Controller
            
         ]);
         
+        
+        
               //s3アップロード開始
               
       $file = $request->file('file');
@@ -51,8 +53,21 @@ class VoicesController extends Controller
             'youtube_url' =>$youtube
         ]);
          }
+         
+          if (is_null($request['file']) || is_null($request['youtube_url'])) {
+            // youtube_urlかファイルのアップロードがどちらか片方を入力しなければバリデーションエラーの表示を出す
+            if (is_null($request['file'])) {
+                 $request->validate(['youtube_url' => 'required']);
+                 $request->validate(['file' => '']);
+            }
+         
+            if (is_null($request['youtube_url'])) {
+               $request->validate(['file' => 'required']);
+                 $request->validate(['youtube_url' => '']);
+            }
         
-    
+          }
+          
 
       return redirect('/');
  

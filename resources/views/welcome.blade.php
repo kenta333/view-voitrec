@@ -16,7 +16,7 @@
         
         {{-- ユーザ登録ページへのリンク --}}
          {!! link_to_route('signup.get', '今すぐはじめる', [], ['class' => 'btn btn-lg btn-warning mt-3 mb-3']) !!}
-         {!! link_to_route('signup_t.get', '講師の方はこちらから',[], ['class' => 'btn btn-lg btn-info mt-3 mb-3']) !!}
+         {!! link_to_route('signup_t.get', '講師希望の方はこちらから',[], ['class' => 'btn btn-lg btn-info mt-3 mb-3 ml-2']) !!}
 
         </div>
  

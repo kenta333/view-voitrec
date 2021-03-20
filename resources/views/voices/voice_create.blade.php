@@ -34,7 +34,7 @@
 <div class="text-center">
 　 <div class="form-group box">
 　     {!! Form::label('file', '●音声ファイルや動画ファイルのアップロードはこちら') !!}
-      {!! Form::file('file', ['method'=>'post','enctype'=>'multipart/form-data']) !!}
+      {!! Form::file('file', ['method'=>'post','enctype'=>'multipart/form-data','accept'=>'.avi,.mov,.mp4,.mp3,.webm,.wmv']) !!}
   </div>
   </div>
                 <div class="form-group ">

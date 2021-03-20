@@ -29,11 +29,6 @@
                     {!! Form::password('password', ['class' => 'form-control']) !!}
                 </div>
                 
-                                     <div class="form-group">
-                    {!! Form::label('old', '年齢(任意)') !!}
-                    {!! Form::text('old', old('old'), ['class' => 'form-control']) !!}
-                </div>
-                
             
                   <!--性別-->
                     <div class="form-group pb-3">
@@ -41,6 +36,18 @@
                    {{Form::select('gender', ['男性' => '男性', '女性' => '女性'], '男性', ['class' => 'form-control','id' => 'selectEvalute'])}}
 
                     </div>
+                    
+                     <!--年齢-->
+                           <div class="form-group">
+                             {!! Form::label('old', '年齢(任意)') !!}
+                    <select class="form-control" id="selectEvalute" name="old">
+                    <option value="">{{ old('old') }}</option>    
+               @for ($i = 0; $i < 101; $i++)
+ <option value="{{$i}}">{{$i}}</option>
+@endfor
+</select>
+                </div>
+                
                     
                     
                 

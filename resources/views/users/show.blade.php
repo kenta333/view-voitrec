@@ -45,9 +45,9 @@
                                         {!! link_to_route('voices.show', 'voice', ['id' => $user->id],['class' => 'nav-item nav-link bg-light']) !!}
                                         <a class="nav-item nav-link  bg-dark active" href="#">プロフィール</a>
                                       </nav>
-                                            <div class="profile mt-2 container">
+                                            <div class="profile mt-2 container break">
                                               <div class="jumbotron">
-                                                <div class="text-center break">
+                                                <div class="text-center">
                                                 <h1 class="display-3">{{$user->name}}</h1>
                                                   <div class="trim center">
                                                    <img src="{{$user->file}}" alt="">

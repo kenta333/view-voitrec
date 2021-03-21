@@ -8,6 +8,7 @@ use Storage;
 
 class UsersController extends Controller
 {
+    // 認証後最初のページ(認証後トップページとなる)
      public function index()
     {
         $data = [];
@@ -32,7 +33,7 @@ class UsersController extends Controller
 
         
     }
-    
+    // 一般ユーザー一覧表示ページ
      public function userslist()
         {
         // ユーザ一覧をidの降順で取得
@@ -45,7 +46,7 @@ class UsersController extends Controller
             'users' => $users,
         ]);
     }
-    
+    // 講師ユーザー一覧表示ページ
          public function users_t_list()
         {
         // ユーザ一覧をidの降順で取得
@@ -62,7 +63,7 @@ class UsersController extends Controller
     
     
     
-    
+    // ユーザー詳細ページ
         public function show($id)
     {
         // idの値でユーザを検索して取得
@@ -82,12 +83,12 @@ class UsersController extends Controller
             'matching_each'=>$matching_each
         ]);
     }
-
+// ユーザープロフィール編集画面表示
      public function edit($id)
     {
         
         
-        // idの値でメッセージを検索して取得
+        // idの値でユーザーを検索して取得
         $user = User::findOrFail($id);
 
         // メッセージ編集ビューでそれを表示
@@ -95,7 +96,7 @@ class UsersController extends Controller
             'user' => $user,
         ]);
     }
-    
+    // ユーザープロフィール情報更新処理
      public function update(Request $request, $id)
     {
           $request->validate([
@@ -103,7 +104,7 @@ class UsersController extends Controller
             'gender' => 'required'
            
         ]);
-           // idの値でメッセージを検索して取得
+           // idの値でユーザーを検索して取得
         $user = User::findOrFail($id);
         // プロフィールを更新
         $user->old = $request->old;
@@ -111,6 +112,7 @@ class UsersController extends Controller
         $user->like = $request->like;
         $user->free = $request->free;
         
+        // アイコンの画像の登録処理
  $file = $request->file('file');
     if(isset($file)){
       // バケットの`myprefix`フォルダへアップロード
@@ -123,6 +125,7 @@ class UsersController extends Controller
         // ユーザー詳細画面へリダイレクトさせる
          return redirect()->route('show', ['id' => $user]);
     }
+    
     
     // フォロー機能・フォロー／フォロワー一覧表示
     // 中略

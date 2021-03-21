@@ -11,16 +11,17 @@ use App\Comment;
 
 class VoicesController extends Controller
 {
+    // voice新規作成画面表示
   public function add()
   {
       if (\Auth::check()) { // 認証済みの場合
-      
-          return view('voices.voice_create');
+      return view('voices.voice_create');
   }
-  }
-
+}
+// voice作成にあたっての必要情報処理
   public function store(Request $request)
   {
+    //   バリデーション１
        $request->validate([
             'title' => 'required|max:255',
             'content' => 'required|max:255',
@@ -30,7 +31,7 @@ class VoicesController extends Controller
         
         
               //s3アップロード開始
-              
+            //   ファイルのアップロード処理
       $file = $request->file('file');
       if(isset($file)){
     
@@ -44,7 +45,7 @@ class VoicesController extends Controller
             ]);
       
       }
-      
+    // youtube_urlの送信処理
        $youtube =$request->youtube_url;
          if(isset($youtube)){
          $request->user()->voices()->create([
@@ -53,9 +54,9 @@ class VoicesController extends Controller
             'youtube_url' =>$youtube
         ]);
          }
-         
+         //   バリデーション２
           if (is_null($request['file']) || is_null($request['youtube_url'])) {
-            // youtube_urlかファイルのアップロードがどちらか片方を入力しなければバリデーションエラーの表示を出す
+            // youtube_urlの入力かファイルのアップロードのどちらかをしなければバリデーションエラーの表示を出す
             if (is_null($request['file'])) {
                  $request->validate(['youtube_url' => 'required']);
                  $request->validate(['file' => '']);
@@ -72,6 +73,7 @@ class VoicesController extends Controller
       return redirect('/');
  
 }
+// ユーザーページ上のvoiceタブを押した際の画面表示(各ユーザーvoice一覧)
     public function voices($id)
     {
         // idの値でユーザを検索して取得
@@ -84,7 +86,7 @@ class VoicesController extends Controller
          $user->loadRelationshipCounts() ;
          
                  
-    //   マッチングボタン制御用
+    //   マッチングボタン制御用(画面左側のカード上に表示)
   $auth_user = \Auth::user();
             $userIds = $auth_user->matchings()->pluck('users.id')->toArray();
        //相互マッチング中のユーザを取得
@@ -100,7 +102,7 @@ class VoicesController extends Controller
         ]);
     }
     
-    
+    // 全ユーザーの投稿一覧表示
   public function new()
   {
       if (\Auth::check()) { // 認証済みの場合
@@ -113,9 +115,8 @@ class VoicesController extends Controller
   }
   }
     
-    
+    //   選択したvoiceの詳細画面を表示
        public function show($id)
-    //   選択したvoiceの詳細画面を表示するルーティング
     {
         // idの値でvoiceを検索して取得
         $voice = Voice::findOrFail($id);
@@ -132,6 +133,7 @@ class VoicesController extends Controller
         ]);
     }
     
+    // voiceの削除ボタンを押した時の処理
        public function destroy($id)
     {
         // idの値で投稿を検索して取得

@@ -1,5 +1,6 @@
 @charset "UTF-8";
 
+
 .top_content {
     min-height:100vh;
     background-size: cover;
@@ -99,6 +100,14 @@ footer {
     text-align: center;
 }
 
+.font_change h1{
+       font-family: 'Noto Serif JP', serif;
+}
+
+.last_row{
+    margin-bottom: 70px;
+}
+
 
 .logo {
 font-family: 'Seymour One', sans-serif;
@@ -108,8 +117,9 @@ font-family: 'Seymour One', sans-serif;
 
 .center_text {
     text-align: center;
-    padding-top: 250px;
-    font-family: 'Noto Serif JP', serif;
+    padding-top: 230px;
+       font-family: 'Noto Serif JP', serif;
+
    
 }
 
@@ -145,7 +155,7 @@ font-family: 'Seymour One', sans-serif;
             background-size:cover;
             opacity: 0.8;
             	z-index:1;
-            	padding-bottom: 500px;
+            	padding-bottom: 400px;
     
 }
 
@@ -374,4 +384,5 @@ background-color: #ff5847;
     .center_text {
         	padding-bottom: 100px;
 }
+
 }

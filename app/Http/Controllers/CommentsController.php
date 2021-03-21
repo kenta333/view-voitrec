@@ -9,18 +9,7 @@ use App\Comment;
 
 class CommentsController extends Controller
 {
-    public function create($id){
-        
-  $voice = Voice::findOrFail($id);
-        $user = $voice->user;
-
-        // voice詳細ビューでそれを表示
-        return view('users.comment_maid', [
-            'voice' => $voice,
-             'user' => $user,
-        ]);
-    }
-    
+// コメントを入力したときの情報処理およびバリデーション
   public function store(Request $request,$id)
   {
      // idの値でVoiceを検索して取得
@@ -37,6 +26,7 @@ class CommentsController extends Controller
         
          return redirect()->action('VoicesController@show', ['id' => $voice->id]);
 }
+// コメントの削除ボタンを押した時の処理
     public function destroy($id)
     {
         // idの値で投稿を検索して取得

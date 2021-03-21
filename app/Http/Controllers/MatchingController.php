@@ -10,6 +10,7 @@ use App\Mail\ContactMail;
 
 class MatchingController extends Controller
 {
+    // マッチングをするボタンを押した時の処理
         public function store($id)
     {
    
@@ -30,6 +31,7 @@ class MatchingController extends Controller
         return view('users.matching_page2_finish',['user'=>$user]);
     }
     }
+    // マッチング希望に対して受諾しないボタンを押した時の処理
        public function destroy($id)
     {
         // 認証済みユーザ（閲覧者）が、 idのユーザをマッチング拒否する
@@ -54,6 +56,7 @@ class MatchingController extends Controller
         return back();
     }
 
+// マッチングが成立した時の処理
 public function matching_done($id)
 {
     

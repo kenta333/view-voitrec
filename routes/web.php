@@ -10,6 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+// トップページ(※@indexで認証をかける。ログイン前後でviewが切り替わる)
 Route::get('/', 'UsersController@index');
 
 
@@ -29,7 +30,7 @@ Route::get('logout', 'Auth\LoginController@logout')->name('logout.get');
   Route::get('users', 'UsersController@index')->name('index');
 
     
-    //一般user一覧
+    //一般ユーザー一覧
     Route::get('users.list', 'UsersController@userslist')->name('users.list');
     
     // 講師ユーザー一覧
@@ -65,6 +66,7 @@ Route::put('users/{id}', 'UsersController@update')->name('users.update');
     });
     });
 
+// フォロー関係↓
 
 Route::group(['middleware' => ['auth']], function () {
     Route::group(['prefix' => 'users/{id}'], function () {
@@ -80,7 +82,7 @@ Route::group(['middleware' => ['auth']], function () {
 });
 
 
-// コメント機能
+// コメント関係↓
 Route::group(['middleware' => ['auth']], function () {
     Route::group(['prefix' => 'voice/{id}'], function () {
       
@@ -93,15 +95,14 @@ Route::group(['middleware' => ['auth']], function () {
 });
     
     
-    // マッチング機能
-    Route::group(['middleware' => ['auth']], function () {
+// マッチング関係↓
+ Route::group(['middleware' => ['auth']], function () {
     Route::group(['prefix' => 'users/{id}'], function () {
       // マッチングページその１
         Route::get('matching', 'UsersController@matching_page')->name('users.mpage');
       
 
             // マッチング成立画面(受諾ボタンを押した時のget処理)
-       
           Route::get('/done', 'MatchingController@matching_done')->name('users.donepage');
          
         // マッチング拒否のデリート処理(受諾しないを押した時の処理)

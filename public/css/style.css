@@ -133,6 +133,9 @@ font-family: 'Seymour One', sans-serif;
           	z-index:2;
        
 }
+.break {
+    word-break:break-all;
+}
 .under_icon {
     text-align: center;
     margin-top: 45px;

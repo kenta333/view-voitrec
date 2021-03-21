@@ -47,7 +47,7 @@
                                       </nav>
                                             <div class="profile mt-2 container">
                                               <div class="jumbotron">
-                                                <div class="text-center">
+                                                <div class="text-center break">
                                                 <h1 class="display-3">{{$user->name}}</h1>
                                                   <div class="trim center">
                                                    <img src="{{$user->file}}" alt="">

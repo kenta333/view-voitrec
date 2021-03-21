@@ -19,7 +19,7 @@
                     {!! Form::email('email', old('email'), ['class' => 'form-control']) !!}
                 </div>
                 <div class="form-group">
-                    {!! Form::label('password', 'パスワード') !!}
+                    {!! Form::label('password', 'パスワード(半角英数字８文字以上)') !!}
                     {!! Form::password('password', ['class' => 'form-control']) !!}
                 </div>
                     <div class="form-group pb-3">
